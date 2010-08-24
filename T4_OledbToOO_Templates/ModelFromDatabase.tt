@@ -1,0 +1,22 @@
+﻿<#@ template language="C#v3.5" hostspecific="True" debug="True" #> 
+<#@ output extension="txt" #> 
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="DatabaseToModelGenerator.tt" #>  
+<#
+    var config = new GeneratorConfig()
+    {
+		AssemblyName  = "Example.Entities",
+		UseDataBaseSchemaAsNamespacePart  = true,
+		
+		UseDataAnnotationAttributes	= false,
+		UseINotifyPropertyChanged	= false,
+		TypeOfCollections 			= CollectionsType.Collection,
+
+		UsefulDB4OConfigurationAttributes = false,
+		CloneMode = CloneType.Oop
+    };
+    
+    var generator = new DatabaseToModelGenerator(config); 
+    generator.DataBaseConnectionString = "Provider=SQLNCLI10;Server=localhost\\SQLEXPRESS2008;Database=AdventureWorks;Trusted_Connection=yes;";
+    generator.Run(); 
+#>

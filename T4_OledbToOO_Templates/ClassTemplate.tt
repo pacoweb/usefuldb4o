@@ -1,0 +1,371 @@
+<#@ output extension=".null" #> 
+<#+
+public class ClassTemplate : Template
+{
+	public TableData TableInfo;
+	public GeneratorConfig Config;
+	
+	public override string TransformText()
+    {
+		
+#>
+#region usings
+
+using System;
+<#+ if(Config.UseINotifyPropertyChanged){#>
+using System.ComponentModel;
+<#+ } #>
+<#+ if(Config.UseDataAnnotationAttributes){ #>
+using System.ComponentModel.DataAnnotations;
+<#+ } #>
+using System.Collections.ObjectModel;
+<#+ if(Config.CloneMode == CloneType.ToEnableDataMigration){#>
+using System.Collections.Generic;
+using System.Data.OleDb;
+<#+ } #>
+
+<#+ if(Config.UsefulDB4OConfigurationAttributes){#>
+using UsefulDB4O.DatabaseConfig.Attributes;
+<#+ } #>
+<#+ if(Config.CloneMode == CloneType.ToEnableDataMigration){#>
+using UsefulDB4O.OleDbMigration.Attributes;
+<#+ } #>
+
+#endregion usings
+
+namespace <#= TableInfo.Namespace #>
+{
+	<#+
+		if(Config.CloneMode == CloneType.ToEnableDataMigration)
+		{
+			var completeTableName = TableInfo.TableName;
+			
+			if(!String.IsNullOrEmpty(TableInfo.SchemaName))
+				completeTableName = String.Format("{0}.{1}", TableInfo.SchemaName, TableInfo.TableName);
+			
+			this.WriteLine(String.Format("[TableInformation(TableName = \"{0}\")]", completeTableName));
+		}
+	#>[Serializable]
+	public partial class <#=TableInfo.ClassName#><#+ if(Config.UseINotifyPropertyChanged){#>
+	: INotifyPropertyChanged
+	<#+ } #>
+	{
+	
+<#+
+		if(TableInfo.Columns != null && TableInfo.Columns.Count > 0)
+		{
+			this.PushIndent("\t\t");
+			this.WriteLine("#region PROPERTIES");
+			
+			foreach(var columnInfo in TableInfo.Columns)
+			{	
+				var isForeignKey = (columnInfo.IsForeignKeyParent || columnInfo.IsForeignKeyChild) ? true : false;
+				
+				if(Config.CloneMode == CloneType.Oop
+					&& (columnInfo.IsPrimaryKey || isForeignKey))
+					continue;
+					
+				if(Config.CloneMode == CloneType.OopWithPk
+					&& !columnInfo.IsPrimaryKey 
+						&& isForeignKey)
+					continue;
+				
+				this.WriteLine(String.Empty);
+	            
+	            var makeNullable = (columnInfo.CodeType.IsValueType && columnInfo.IsNullable) ? true : false;
+	            
+				
+				//DB4O CONFIGURATION ATTRIBUTES
+				if(Config.UsefulDB4OConfigurationAttributes
+						&& (columnInfo.IsIndexed || columnInfo.IsPrimaryKey || 
+								(Config.CloneMode == CloneType.ToEnableDataMigration && isForeignKey)
+						   )
+				  )
+				{
+					if(columnInfo.IsIndexed || isForeignKey)
+						this.WriteLine("[IndexedField(IndexField = true)]");
+				
+					if(!TableInfo.HasMultiplesPrimaryKeys)
+					{
+						if(columnInfo.IsPrimaryKey)
+							this.WriteLine("[UniqueFieldValueConstraint(IsUnique = true)]");
+					
+						if(!columnInfo.IsPrimaryKey && columnInfo.IsUniqueIndex)
+							this.WriteLine("[UniqueFieldValueConstraint(IsUnique = true)]");
+					}
+				}
+	            
+				this.WriteLine(String.Format("private {0}{1} {2};", columnInfo.CodeTypeString, makeNullable ? "?" : String.Empty, columnInfo.PrivateFieldName));
+				
+	            this.WriteLine(String.Empty);
+	            
+				//DATA ANNOTATIONS ATTRIBUTES
+				if(Config.UseDataAnnotationAttributes && (!columnInfo.IsNullable || columnInfo.StringMaxLength > 0))
+				{
+					if(!columnInfo.IsNullable)
+						this.WriteLine(String.Format("[Required(ErrorMessage=\"{0} is required\")]", columnInfo.PropertyName));
+					
+					if(columnInfo.StringMaxLength > 0)
+						this.WriteLine(String.Format("[StringLength({0}, ErrorMessage=\"{1} cannot be longer than {0} characters\")]", columnInfo.StringMaxLength
+																	, columnInfo.PropertyName ));
+				}
+
+				//MIGRATION ATTRIBUTES
+				if(Config.CloneMode == CloneType.ToEnableDataMigration)
+				{
+					this.WriteLine(String.Format("[ColumnInformation(ColumnName = \"{0}\", CodeType = typeof({1}), ColumnType = OleDbType.{2}, IsPrimaryKey={3})]", columnInfo.ColumnName, columnInfo.CodeTypeString, columnInfo.ColumnType, 
+						columnInfo.IsPrimaryKey.ToString().ToLower()));
+				}
+				
+				this.WriteLine(String.Format("public {0}{1} {2}", columnInfo.CodeTypeString,  makeNullable ? "?" : String.Empty, columnInfo.PropertyName));
+	            
+				this.WriteLine("{");
+					
+					var propertyChangedString = String.Empty;
+					
+					if(Config.UseINotifyPropertyChanged)
+					{
+						propertyChangedString = String.Format("onPropertyChanged(this, \"{0}\");", columnInfo.PropertyName);
+					}
+	            
+					this.PushIndent("\t");
+					this.WriteLine(String.Format("get{{ return {0}; }}", columnInfo.PrivateFieldName));
+					this.WriteLine(String.Format("set{{ {0} = value; {1}}}", columnInfo.PrivateFieldName, propertyChangedString));
+					this.PopIndent();
+					
+	            
+				this.WriteLine("}");
+			}
+	        
+			this.WriteLine(String.Empty);
+	        
+	        this.WriteLine("#endregion PROPERTIES");
+			this.PopIndent();
+			
+			this.WriteLine(String.Empty);
+        }
+#><#+
+		if(TableInfo.ChildRelations != null && TableInfo.ChildRelations.Count > 0
+				&& Config.CloneMode != CloneType.DataBaseEqual)
+		{
+			this.PushIndent("\t\t");
+			this.WriteLine("#region CHILD PROPERTIES");
+			
+			var collectionStringType = Config.TypeOfCollections == CollectionsType.ObservableCollection ? "ObservableCollection" : "Collection";
+			
+			foreach(var childRelation in TableInfo.ChildRelations)
+			{
+				var privateFieldName	= String.Format("{0}Collection", childRelation.ChildTable.PrivateFieldName);
+				var publicPropertyName	= String.Format("{0}Collection", childRelation.ChildTable.ClassName);
+				
+				if(childRelation.SameTablesNumber > 1)
+				{
+					privateFieldName	= String.Format("{0}Collection{1}", childRelation.ChildTable.PrivateFieldName, childRelation.SameTablesNumber);
+					publicPropertyName	= String.Format("{0}Collection{1}", childRelation.ChildTable.ClassName, childRelation.SameTablesNumber);
+				}
+				
+				this.WriteLine(String.Empty);
+	            
+	            var privateDeclaration = String.Format("private {2}<{0}> {1} = new {2}<{0}>();", childRelation.ChildTable.ClassName, privateFieldName, collectionStringType);
+	            var publicDeclaration  = String.Format("public {2}<{0}> {1}"  , childRelation.ChildTable.ClassName, publicPropertyName, collectionStringType);
+	            
+	            if(Config.UseDataBaseSchemaAsNamespacePart)
+	            {
+					privateDeclaration = String.Format("private {3}<{0}.{1}> {2} = new {3}<{0}.{1}>();", childRelation.ChildTable.Namespace, childRelation.ChildTable.ClassName, privateFieldName, collectionStringType);
+					publicDeclaration  = String.Format("public {3}<{0}.{1}> {2}"  , childRelation.ChildTable.Namespace, childRelation.ChildTable.ClassName, publicPropertyName, collectionStringType);
+	            }
+	            
+				this.WriteLine(privateDeclaration);
+				
+				//MIGRATION ATTRIBUTES
+				if(Config.CloneMode == CloneType.ToEnableDataMigration)
+				{
+					var parentTableName = String.Format("{0}.{1}", childRelation.ParentTable.SchemaName, childRelation.ParentTable.TableName);
+					var childTableName  = String.Format("{0}.{1}", childRelation.ChildTable.SchemaName,  childRelation.ChildTable.TableName);
+					
+					var columnsCount = childRelation.ParentColumns.Count();
+					
+					var parentColumnNames	= new List<string>(columnsCount);
+					var childColumnNames	= new List<string>(columnsCount);
+					var propertyNames		= new List<string>(columnsCount);
+					var foreignFieldNames	= new List<string>(columnsCount);
+					
+					for(var x = 0; x < columnsCount; x++)
+					{
+						var parentColumn = childRelation.ParentColumns[x];
+						var childColumn  = childRelation.ChildColumns[x];
+						
+						parentColumnNames.Add(String.Format("\"{0}\"", parentColumn.ColumnName));
+						childColumnNames.Add(String.Format("\"{0}\"", childColumn.ColumnName));
+						
+						propertyNames.Add(String.Format("\"{0}\"", parentColumn.PropertyName));
+						foreignFieldNames.Add(String.Format("\"{0}\"", childColumn.PrivateFieldName));
+					}
+					
+					this.WriteLine(String.Format("[RelationInformation(IsEntityParent=true, ParentTableName = \"{0}\", ChildTableName = \"{1}\", ParentColumnNames = new[]{{ {2} }}, ChildColumnNames =  new[]{{ {3} }} , PropertyNames = new[]{{ {4} }}, ForeignFieldNames =  new[]{{ {5} }}, PrivateCollectionFieldName = \"{6}\" )]"
+											, parentTableName
+											, childTableName
+											, String.Join(",", parentColumnNames.ToArray()) 
+											, String.Join(",", childColumnNames.ToArray())	
+											, String.Join(",", propertyNames.ToArray())		
+											, String.Join(",", foreignFieldNames.ToArray())
+											, privateFieldName 
+					));
+				}
+				
+				this.WriteLine(publicDeclaration);
+	            
+				this.WriteLine("{");
+	            
+					this.PushIndent("\t");
+					this.WriteLine(String.Format("get{{ return {0}; }}",  privateFieldName));
+					
+					//PRIVATE SET STAFF
+					this.WriteLine("private set");
+					this.WriteLine("{");
+						this.PushIndent("\t");						
+						this.WriteLine(String.Format("if ({0} == value)", publicPropertyName));
+						this.PushIndent("\t");
+						this.WriteLine("return;");
+						this.PopIndent();
+						
+						this.WriteLine(String.Format("{0} = value;", privateFieldName));
+						
+						if(Config.UseINotifyPropertyChanged)
+						{
+							this.WriteLine(String.Format("this.NotifyPropertyChanged(\"{0}\")", publicPropertyName));
+						}
+						
+						this.PopIndent();
+					this.WriteLine("}");
+					this.PopIndent();
+	            
+				this.WriteLine("}");
+			}
+	        
+			this.WriteLine(String.Empty);
+	        
+	        this.WriteLine("#endregion CHILD PROPERTIES");
+			this.PopIndent();
+			
+			this.WriteLine(String.Empty);
+		}
+#><#+
+		if(TableInfo.ParentRelations != null && TableInfo.ParentRelations.Count > 0
+				&& Config.CloneMode != CloneType.DataBaseEqual)
+		{
+			this.PushIndent("\t\t");
+			this.WriteLine("#region PARENT PROPERTIES");
+			
+			foreach(var parentRelation in TableInfo.ParentRelations)
+			{
+				var privateFieldName	= String.Format("{0}Parent", parentRelation.ParentTable.PrivateFieldName);
+				var publicPropertyName	= String.Format("{0}Parent", parentRelation.ParentTable.ClassName);
+				
+				if(parentRelation.SameTablesNumber > 1)
+				{
+					privateFieldName	= String.Format("{0}Parent{1}", parentRelation.ParentTable.PrivateFieldName, parentRelation.SameTablesNumber);
+					publicPropertyName	= String.Format("{0}Parent{1}", parentRelation.ParentTable.ClassName, parentRelation.SameTablesNumber);	
+				}
+				
+				this.WriteLine(String.Empty);
+				
+				var privateDeclaration = String.Format("private {0} {1};", parentRelation.ParentTable.ClassName, privateFieldName);
+	            var publicDeclaration  = String.Format("public {0} {1}", parentRelation.ParentTable.ClassName, publicPropertyName);
+	            
+				if(Config.UseDataBaseSchemaAsNamespacePart)
+	            {
+					privateDeclaration = String.Format("private {0}.{1} {2};", parentRelation.ParentTable.Namespace, parentRelation.ParentTable.ClassName, privateFieldName);
+					publicDeclaration  = String.Format("public {0}.{1} {2}", parentRelation.ParentTable.Namespace, parentRelation.ParentTable.ClassName, publicPropertyName);
+				}
+				
+				this.WriteLine(privateDeclaration);
+	            
+				//MIGRATION ATTRIBUTES
+				if(Config.CloneMode == CloneType.ToEnableDataMigration)
+				{
+					
+					var parentTableName = String.Format("{0}.{1}", parentRelation.ParentTable.SchemaName, parentRelation.ParentTable.TableName);
+					var childTableName  = String.Format("{0}.{1}", parentRelation.ChildTable.SchemaName,  parentRelation.ChildTable.TableName);
+					
+					var columnsCount = parentRelation.ParentColumns.Count();
+					
+					var parentColumnNames	= new List<string>(columnsCount);
+					var childColumnNames	= new List<string>(columnsCount);
+					var propertyNames		= new List<string>(columnsCount);
+					var foreignFieldNames	= new List<string>(columnsCount);
+					
+					
+					var parentAndChildColumnNames     = new List<string>(columnsCount);
+					var propertyAndForeignFieldNames  = new List<string>(columnsCount);
+					
+					
+					for(var x = 0; x < columnsCount; x++)
+					{
+						var parentColumn = parentRelation.ParentColumns[x];
+						var childColumn  = parentRelation.ChildColumns[x];
+						
+						
+						parentColumnNames.Add(String.Format("\"{0}\"", parentColumn.ColumnName));
+						childColumnNames.Add(String.Format("\"{0}\"", childColumn.ColumnName));
+						
+						propertyNames.Add(String.Format("\"{0}\"", childColumn.PropertyName));
+						foreignFieldNames.Add(String.Format("\"{0}\"", parentColumn.PrivateFieldName));
+					}
+					
+					this.WriteLine(String.Format("[RelationInformation(IsEntityParent=false, ParentTableName = \"{0}\", ChildTableName = \"{1}\", ParentColumnNames = new[]{{ {2} }}, ChildColumnNames =  new[]{{ {3} }} , PropertyNames = new[]{{ {4} }}, ForeignFieldNames =  new[]{{ {5} }} )]"
+											, parentTableName
+											, childTableName
+											, String.Join(",", parentColumnNames.ToArray()) 
+											, String.Join(",", childColumnNames.ToArray())	
+											, String.Join(",", propertyNames.ToArray())		
+											, String.Join(",", foreignFieldNames.ToArray()) 
+					));
+				}
+				
+				this.WriteLine(publicDeclaration);
+	            
+				this.WriteLine("{");
+	            
+	            var propertyChangedString = String.Empty;
+	            
+	            if(Config.UseINotifyPropertyChanged)
+				{
+					propertyChangedString = String.Format("onPropertyChanged(this, \"{0}\");", publicPropertyName);
+				}
+	            
+					this.PushIndent("\t");
+					this.WriteLine(String.Format("get{{ return {0}; }}", privateFieldName));
+					this.WriteLine(String.Format("set{{ {0} = value; {1} }}", privateFieldName, propertyChangedString));
+					this.PopIndent();
+	            
+				this.WriteLine("}");
+			}
+	        
+			this.WriteLine(String.Empty);
+	        
+	        this.WriteLine("#endregion PARENT PROPERTIES");
+			this.PopIndent();
+
+			this.WriteLine(String.Empty);
+		}
+#><#+ if(Config.UseINotifyPropertyChanged){#>
+		#region INotifyPropertyChanged
+		public event PropertyChangedEventHandler PropertyChanged;
+	    
+		private void onPropertyChanged(object sender, string propertyName)
+		{
+			if (this.PropertyChanged != null)
+			{
+				PropertyChanged(sender, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		#endregion
+<#+}  #>
+	}	
+}		
+<#+	
+		return this.GenerationEnvironment.ToString();
+    }
+}
+#>

@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using System.Collections.ObjectModel;
+﻿using System.Text;
+using System;
 
 namespace UsefulDB4O.OleDBMigration.SelectProviders
 {
@@ -10,12 +9,18 @@ namespace UsefulDB4O.OleDBMigration.SelectProviders
 
         public string GetSqlQuery(string tableName, string[] columnNames, int topRows)
         {
+            if (String.IsNullOrEmpty(tableName))
+                throw new ArgumentNullException("tableName");
+
+            if (columnNames == null || columnNames.Length == 0)
+                throw new ArgumentNullException("columnNames");
+            
             var blderSql = new StringBuilder();
 
             blderSql.Append("SELECT ");
 
             if (topRows > 0)
-                blderSql.AppendFormat(" TOP {0}", topRows);
+                blderSql.AppendFormat(" TOP {0} ", topRows);
 
             var start = true;
 

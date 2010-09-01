@@ -5,18 +5,20 @@
 <#
     var config = new GeneratorConfig()
     {
-		AssemblyName  = "Example.Entities",
+		AssemblyName  = "...",
 		UseDataBaseSchemaAsNamespacePart  = true,
 		
-		UseDataAnnotationAttributes	= false,
-		UseINotifyPropertyChanged	= false,
-		TypeOfCollections 			= CollectionsType.Collection,
+		UseDataAnnotationAttributes	= true,
+		UseINotifyPropertyChanged	= true,
+		TypeOfCollections 			= CollectionsType.ObservableCollection,
 
-		UsefulDB4OConfigurationAttributes = false,
-		CloneMode = CloneType.Oop
+		UsefulDB4OConfigurationAttributes = true,
+		CloneMode = CloneType.ToEnableDataMigration
     };
     
     var generator = new DatabaseToModelGenerator(config); 
     generator.DataBaseConnectionString = "Provider=SQLNCLI10;Server=localhost\\SQLEXPRESS2008;Database=AdventureWorks;Trusted_Connection=yes;";
-    generator.Run(); 
+    
+	//UNCOMMENT TO GENERATE
+	//generator.Run(); 
 #>

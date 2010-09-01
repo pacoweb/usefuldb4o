@@ -1,0 +1,9 @@
+C:\Source\Examples\OleDBMigrationSolution\Example.Entities\obj\Debug\ResolveAssemblyReference.cache
+C:\Source\Examples\OleDBMigrationSolution\Example.Entities\bin\Debug\Example.Entities.dll
+C:\Source\Examples\OleDBMigrationSolution\Example.Entities\bin\Debug\Example.Entities.pdb
+C:\Source\Examples\OleDBMigrationSolution\Example.Entities\bin\Debug\UsefulDB4O.dll
+C:\Source\Examples\OleDBMigrationSolution\Example.Entities\bin\Debug\Db4objects.Db4o.dll
+C:\Source\Examples\OleDBMigrationSolution\Example.Entities\bin\Debug\Db4objects.Db4o.xml
+C:\Source\Examples\OleDBMigrationSolution\Example.Entities\bin\Debug\UsefulDB4O.pdb
+C:\Source\Examples\OleDBMigrationSolution\Example.Entities\obj\Debug\Example.Entities.dll
+C:\Source\Examples\OleDBMigrationSolution\Example.Entities\obj\Debug\Example.Entities.pdb

@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Db4objects.Db4o, Version=8.0.156.14687, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL">
+    <Reference Include="Db4objects.Db4o, Version=8.0.160.14822, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Binary\db4o-8.0\bin\net-3.5\Db4objects.Db4o.dll</HintPath>
     </Reference>
@@ -54,15 +54,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseConfig\TransientFieldAttribute.cs" />
     <Compile Include="DatabaseConfig\IndexedFieldAttribute.cs" />
     <Compile Include="DatabaseConfig\UniqueFieldValueConstraintAttribute.cs" />
     <Compile Include="DatabaseConfig\UuidClassAttribute.cs" />
     <Compile Include="DatabaseConfig\VersionNumberClassAttribute.cs" />
     <Compile Include="DatabaseConfig\ConfigGenerator.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="OleDbMigration\Attributes\ColumnInformationAttribute.cs" />
-    <Compile Include="OleDbMigration\Attributes\RelationInformationAttribute.cs" />
-    <Compile Include="OleDbMigration\Attributes\TableInformationAttribute.cs" />
+    <Compile Include="OleDbMigration\ColumnInformationAttribute.cs" />
+    <Compile Include="OleDbMigration\MigratorGettingTypesToLoadEventArgs.cs" />
+    <Compile Include="OleDbMigration\RelationInformationAttribute.cs" />
+    <Compile Include="OleDbMigration\TableInformationAttribute.cs" />
+    <Compile Include="OleDbMigration\MigratorFilledTypeRelationsEventArgs.cs" />
+    <Compile Include="OleDbMigration\MigratorLoadedTypeFromOleDBEventArgs.cs" />
+    <Compile Include="OleDbMigration\MigratorFillingTypeRelationsEventArgs.cs" />
+    <Compile Include="OleDbMigration\MigratorLoadingTypeFromOleDBEventArgs.cs" />
     <Compile Include="OleDbMigration\OleDBDatabaseMigrator.cs" />
     <Compile Include="OleDbMigration\SelectProviders\DefaultSelectProvider.cs" />
     <Compile Include="OleDbMigration\ISelectProvider.cs" />

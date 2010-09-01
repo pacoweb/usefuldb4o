@@ -5,6 +5,6 @@ namespace UsefulDB4O.DatabaseConfig
     [AttributeUsage(AttributeTargets.Field, AllowMultiple=false)]
     public sealed class IndexedFieldAttribute : Attribute
     {
-        public bool IndexField { get; set; }
+        
     }
 }

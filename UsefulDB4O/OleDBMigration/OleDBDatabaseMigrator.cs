@@ -2,9 +2,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.OleDb;
-using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -17,9 +18,7 @@ using Db4objects.Db4o.Defragment;
 using Db4objects.Db4o.IO;
 
 using UsefulDB4O.DatabaseConfig;
-using UsefulDB4O.OleDBMigration;
 using UsefulDB4O.OleDBMigration.SelectProviders;
-using System.Collections.ObjectModel;
 
 #endregion
 
@@ -29,13 +28,29 @@ namespace UsefulDB4O.OleDBMigration
     public class OleDBDatabaseMigrator : IDisposable
     {
 
+        #region DELEGATE AND EVENTS
+
+        public delegate void MigratorGettingTypesToLoadEventHandler(object sender, MigratorGettingTypesToLoadEventArgs e);
+        public delegate void MigratorLoadingTypeFromOleDbEventHandler(object sender, MigratorLoadingTypeFromOleDBEventArgs e);
+        public delegate void MigratorLoadedTypeFromOleDbEventHandler(object sender, MigratorLoadedTypeFromOleDBEventArgs e);
+        public delegate void MigratorFillingTypeRelationsEventHandler(object sender, MigratorFillingTypeRelationsEventArgs e);
+        public delegate void MigratorFilledTypeRelationsEventHandler(object sender, MigratorFilledTypeRelationsEventArgs e);
+
+        public event MigratorGettingTypesToLoadEventHandler GettingTypesToLoad;
+        public event MigratorLoadingTypeFromOleDbEventHandler LoadingTypeFromOleDb;
+        public event MigratorLoadedTypeFromOleDbEventHandler LoadedTypeFromOleDb;
+        public event MigratorFillingTypeRelationsEventHandler FillingTypeRelations;
+        public event MigratorFilledTypeRelationsEventHandler FilledTypeRelations; 
+
+        #endregion
+        
         #region PROPERTIES
 
         /// <summary>
         /// Gets or sets the data base file path.
         /// </summary>
         /// <value>The data base file path.</value>
-        public string DataBaseFilePath { get; set; }
+        public string Db4oDataBaseFilePath { get; set; }
 
         /// <summary>
         /// Gets or sets the data base connection string.
@@ -63,12 +78,6 @@ namespace UsefulDB4O.OleDBMigration
         /// 	<c>true</c> if [just fill items with out relations]; otherwise, <c>false</c>.
         /// </value>
         public bool JustFillItemsWithOutRelations { get; set; }
-
-        /// <summary>
-        /// Gets or sets the parallel handles count.
-        /// </summary>
-        /// <value>The parallel handles count.</value>
-        public int ParallelHandlesCount { get; set; }
 
         /// <summary>
         /// Gets or sets the entities commit limit.
@@ -110,7 +119,7 @@ namespace UsefulDB4O.OleDBMigration
 
         #region PRIVATE MEMBERS
 
-        private const string _propertyMissingFormat = "The property {0} is required for the Start method in OleDBDatabaseMigrator";
+        private const string PropertyMissingFormat = "The property {0} is required for the Start method in OleDBDatabaseMigrator";
 
         private bool _disposed;
         private Collection<Type> _entitityTypes;
@@ -126,13 +135,14 @@ namespace UsefulDB4O.OleDBMigration
         public void Start()
         {
             ValidateProperties();
-            LoadEntities();
+
+            FilterEntityTypes();
 
             BackupPreviousDataBaseFile();
 
             EnsureCloseDb4OContainer();
 
-            FillAllEntities();
+            LoadTypesFromOleDb();
 
             if (!UseMemoryStorageInProcess)
             {
@@ -169,10 +179,26 @@ namespace UsefulDB4O.OleDBMigration
             if(String.IsNullOrEmpty(targetFilePath))
                 throw new ArgumentNullException("targetFilePath");
 
-            var serializer  = new XmlSerializer(typeof(OleDBDatabaseMigrator));
-            var writer      = new StreamWriter(targetFilePath);
+            StreamWriter writer      = null;
+            XmlSerializer serializer;
 
-            serializer.Serialize(writer, migrator);
+            try
+            {
+                serializer = new XmlSerializer(typeof(OleDBDatabaseMigrator));
+                writer = new StreamWriter(targetFilePath);
+
+                serializer.Serialize(writer, migrator);
+            }
+            catch (Exception)
+            {
+                if (writer != null)
+                {
+                    writer.Close();
+                    writer.Dispose();
+                }
+
+                throw;
+            }
 
             writer.Close();
             writer.Dispose();
@@ -185,44 +211,98 @@ namespace UsefulDB4O.OleDBMigration
         /// <returns></returns>
         public static OleDBDatabaseMigrator DeSerializeFromXml(string serializedFilePath)
         {
-            var serializer = new XmlSerializer(typeof(OleDBDatabaseMigrator));
-            var fileStream = new FileStream(serializedFilePath, FileMode.Open);
 
-            return (OleDBDatabaseMigrator)serializer.Deserialize(fileStream);
+            XmlSerializer   serializer;
+            FileStream      fileStream = null;
+            OleDBDatabaseMigrator migrator;
+
+            try
+            {
+                serializer = new XmlSerializer(typeof(OleDBDatabaseMigrator));
+                fileStream = new FileStream(serializedFilePath, FileMode.Open);
+
+                migrator = (OleDBDatabaseMigrator)serializer.Deserialize(fileStream);
+
+                fileStream.Close();
+                fileStream.Dispose();
+            }
+            catch (Exception)
+            {
+                if (fileStream != null)
+                {
+                    fileStream.Close();
+                    fileStream.Dispose();
+                }
+
+                throw;
+            }
+
+            fileStream.Close();
+            fileStream.Dispose();
+
+            return migrator;
         }
 
         #endregion
 
-        #region PROTECTED METHODS
+        #region PRIVATE METHODS
 
-        protected int FillEntity(Type entityType, IObjectContainer container)
+        private void LoadEntityType(Type entityType, IObjectContainer container)
         {
             var tableAttrib = entityType.GetAttribute<TableInformationAttribute>();
 
             if (tableAttrib == null)
-                return 0;
+                return;
 
             var properties = entityType.GetProperties(BindingFlags.Public | BindingFlags.Instance)
                     .Where(prop => prop.GetAttribute<ColumnInformationAttribute>() != null)
                     .ToList();
 
             if (properties.Count == 0)
-                return 0;
+                return;
 
             var columnList = properties.Select(
                     prop => prop.GetAttribute<ColumnInformationAttribute>().ColumnName).ToArray();
 
             var select = GetSelectProvider().GetSqlQuery(tableAttrib.TableName, columnList, TopRowsPerTable);
 
-            return AddOledbRowsToEntity(entityType, select, properties, container);
+            var loadingEventArgs = new MigratorLoadingTypeFromOleDBEventArgs
+                                       { EntityType = entityType,
+                                     SqlSelectQuery = select, EntityPropertiesToLoad = properties};
+
+            OnLoadingType(loadingEventArgs);
+
+            if (loadingEventArgs.Cancel)
+                return;
+
+            var itemsCount = AddOledbRowsToEntity(loadingEventArgs.EntityType, loadingEventArgs.SqlSelectQuery, loadingEventArgs.EntityPropertiesToLoad
+                , container);
+
+            OnLoadedType(new MigratorLoadedTypeFromOleDBEventArgs
+                             { EntityType = entityType, 
+                LoadedRowsCount = itemsCount });
         }
 
-        protected void FillRelationsOfEntity(Type entityType, IObjectContainer container)
+        private void FillRelationsOfEntity(Type entityType, IObjectContainer container)
         {
             var relations = GetRelationsOfEntity(entityType);
 
             if (relations == null || relations.Count == 0)
                 return;
+
+            var fillingEventArgs = new MigratorFillingTypeRelationsEventArgs
+                                       {
+                TypeRelationsToFill = relations,
+                EntityType = entityType
+            };
+
+            OnFillingType(fillingEventArgs);
+
+            if (fillingEventArgs.Cancel 
+                    || (fillingEventArgs.TypeRelationsToFill== null || fillingEventArgs.TypeRelationsToFill.Count == 0 ))
+                return;
+
+            relations = fillingEventArgs.TypeRelationsToFill;
 
             var properties      = entityType.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetProperty);
             var fields          = entityType.GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
@@ -321,24 +401,29 @@ namespace UsefulDB4O.OleDBMigration
 
                 entityTempCount++;
 
-                if (entityTempCount == EntitiesCommitLimit)
-                {
-                    container.Commit();
-                    entityTempCount = 0;
-                }
+                if (entityTempCount != EntitiesCommitLimit) 
+                    continue;
+                
+                container.Commit();
+                entityTempCount = 0;
             }
 
             if(entityTempCount > 0)
                 container.Commit();
 
+            var filledEventArgs = new MigratorFilledTypeRelationsEventArgs
+                                      {
+                 EntityType = entityType
+            };
+
+            OnFilledType(filledEventArgs);
         }
 
-        #endregion
-
-        #region PRIVATE METHODS
-
-        private void LoadEntities()
+        private void FilterEntityTypes()
         {
+            var exceptionMessage = String.Format(CultureInfo.InvariantCulture, "There aren´t types in this namespace '{0}'"
+                , EntitiesNamespaceBase);
+            
             _entitityTypes = EntitiesAssembly
                      .GetTypes()
                      .Where(tp => tp.FullName.StartsWith(EntitiesNamespaceBase, StringComparison.OrdinalIgnoreCase)
@@ -346,7 +431,17 @@ namespace UsefulDB4O.OleDBMigration
                      .ToCollection();
             
             if (_entitityTypes == null || _entitityTypes.Count == 0)
-                throw new ArgumentNullException(String.Format("There aren´t types in this namespace '{0}'", EntitiesNamespaceBase));
+                throw new ArgumentNullException(exceptionMessage);
+
+            var gettingTypesEventArgs = new MigratorGettingTypesToLoadEventArgs
+                                            {
+                EntityTypes = _entitityTypes
+            };
+
+            OnGettingTypesToLoad(gettingTypesEventArgs);
+
+            if (_entitityTypes == null || _entitityTypes.Count == 0)
+                throw new ArgumentNullException(exceptionMessage);
         }
 
         private ISelectProvider GetSelectProvider()
@@ -440,30 +535,41 @@ namespace UsefulDB4O.OleDBMigration
 
         private void ValidateProperties()
         {
+            
             if (String.IsNullOrEmpty(DataBaseConnectionString))
-                throw new ArgumentNullException(String.Format(_propertyMissingFormat, "DataBaseConnectionString"));
+                throw new ArgumentNullException(String.Format(CultureInfo.InvariantCulture, PropertyMissingFormat, "DataBaseConnectionString"));
 
             if (String.IsNullOrEmpty(EntitiesNamespaceBase))
-                throw new ArgumentNullException(String.Format(_propertyMissingFormat, "EntitiesNamespaceBase"));
+                throw new ArgumentNullException(String.Format(CultureInfo.InvariantCulture, PropertyMissingFormat, "EntitiesNamespaceBase"));
 
             if (EntitiesAssembly == null)
-                throw new ArgumentNullException(String.Format(_propertyMissingFormat, "EntitiesAssembly"));
+                throw new ArgumentNullException(String.Format(CultureInfo.InvariantCulture, PropertyMissingFormat, "EntitiesAssembly"));
 
-            if (String.IsNullOrEmpty(DataBaseFilePath))
-                throw new ArgumentNullException(String.Format(_propertyMissingFormat, "DataBaseFilePath"));
+            if (String.IsNullOrEmpty(Db4oDataBaseFilePath))
+                throw new ArgumentNullException(String.Format(CultureInfo.InvariantCulture, PropertyMissingFormat, "DataBaseFilePath"));
 
         }
 
         private void BackupPreviousDataBaseFile()
         {
-            if (!File.Exists(DataBaseFilePath))
+            if (!File.Exists(Db4oDataBaseFilePath))
                 return;
 
-            var fileName    = Path.GetFileNameWithoutExtension(DataBaseFilePath);
-            var newFilePath = Path.Combine(Path.GetDirectoryName(DataBaseFilePath), fileName + DateTime.Now.ToString("yyMMddHHmmss"));
+            var fileName    = Path.GetFileNameWithoutExtension(Db4oDataBaseFilePath);
+            var newFilePath = Path.Combine(Path.GetDirectoryName(Db4oDataBaseFilePath), fileName + DateTime.Now.ToString("yyMMddHHmmss", CultureInfo.InvariantCulture));
 
-            File.Move(DataBaseFilePath, newFilePath);
-            File.Delete(DataBaseFilePath);
+            File.Move(Db4oDataBaseFilePath, newFilePath);
+            File.Delete(Db4oDataBaseFilePath);
+        }
+
+        private void LoadTypesFromOleDb()
+        {
+            EnsureOpenDb4OContainer();
+
+            var db4OClient = GetDb4OContainer();
+
+            foreach (var entityType in _entitityTypes)
+                LoadEntityType(entityType, db4OClient);
         }
 
         private void FillRelationsBetweenEntities()
@@ -472,49 +578,8 @@ namespace UsefulDB4O.OleDBMigration
 
             var db4OClient = GetDb4OContainer();
 
-            Debug.Print("--> Filling relations between entities...");
-
             foreach (var entityType in _entitityTypes)
-            {
-
-                var stopWatch = new Stopwatch();
-
-                stopWatch.Start();
-
                 FillRelationsOfEntity(entityType, db4OClient);
-
-                stopWatch.Stop();
-
-                Debug.Print(String.Format("-->{0};{1}", entityType.ToString(), stopWatch.ElapsedMilliseconds));
-
-            }
-
-            Debug.Print("--> End filling relations between entities");
-        }
-
-        private void FillAllEntities()
-        {
-            EnsureOpenDb4OContainer();
-
-            var db4OClient = GetDb4OContainer();
-
-            Debug.Print("--> Filling entities...");
-
-            foreach (var entityType in _entitityTypes)
-            {
-
-                var stopWatch = new Stopwatch();
-
-                stopWatch.Start();
-
-                var entityCount = FillEntity(entityType, db4OClient);
-
-                stopWatch.Stop();
-
-                Debug.Print(String.Format("-->{0};{1}", entityType.ToString(), stopWatch.ElapsedMilliseconds, entityCount));
-            }
-
-            Debug.Print("--> End filling entities");
         }
 
         private void CopyToFileDiskDataBase()
@@ -524,7 +589,7 @@ namespace UsefulDB4O.OleDBMigration
             
             var containerExt = GetDb4OContainer().Ext();
 
-            containerExt.Backup(new FileStorage(), DataBaseFilePath);
+            containerExt.Backup(new FileStorage(), Db4oDataBaseFilePath);
 
             //TODO: Defrag have problems with generated file from Backup
             //Defrag says that there is not file (but File.Exists say yes)
@@ -552,15 +617,11 @@ namespace UsefulDB4O.OleDBMigration
         {
             EnsureCloseDb4OContainer();
 
-            Debug.Print("--> Starting defragment process...");
-
-            var defragConfig = new DefragmentConfig(DataBaseFilePath);
+            var defragConfig = new DefragmentConfig(Db4oDataBaseFilePath);
             defragConfig.Db4oConfig(GetEmbeddedConfiguration());
             defragConfig.ForceBackupDelete(true);
 
             Defragment.Defrag(defragConfig);
-
-            Debug.Print("--> End defragment process");
         }
 
         private void EnsureOpenDb4OContainer()
@@ -568,7 +629,7 @@ namespace UsefulDB4O.OleDBMigration
             if (GetDb4OContainer() != null)
                 return;
 
-            _db4OContainer = Db4oEmbedded.OpenFile(GetEmbeddedConfiguration(), DataBaseFilePath);
+            _db4OContainer = Db4oEmbedded.OpenFile(GetEmbeddedConfiguration(), Db4oDataBaseFilePath);
         }
 
         private void EnsureCloseDb4OContainer()
@@ -585,6 +646,53 @@ namespace UsefulDB4O.OleDBMigration
         private IObjectContainer GetDb4OContainer()
         {
             return _db4OContainer;
+        }
+
+        #endregion
+
+        #region PRIVATE METHODS THAT RAISES EVENTS
+
+        private void OnGettingTypesToLoad(MigratorGettingTypesToLoadEventArgs gettingTypesEventArgs)
+        {
+            if (GettingTypesToLoad == null)
+                return;
+
+            GettingTypesToLoad(this, gettingTypesEventArgs);
+        }
+
+        private void OnLoadingType(MigratorLoadingTypeFromOleDBEventArgs loadingEventArgs)
+        {
+            if (LoadingTypeFromOleDb == null)
+                return;
+
+            LoadingTypeFromOleDb(this, loadingEventArgs);
+        }
+
+
+        private void OnLoadedType(MigratorLoadedTypeFromOleDBEventArgs loadedEventArgs)
+        {
+            if (LoadedTypeFromOleDb == null)
+                return;
+
+            LoadedTypeFromOleDb(this, loadedEventArgs);
+        }
+
+
+        private void OnFillingType(MigratorFillingTypeRelationsEventArgs fillingEventArgs)
+        {
+            if (FillingTypeRelations == null)
+                return;
+
+            FillingTypeRelations(this, fillingEventArgs);
+        }
+
+
+        private void OnFilledType(MigratorFilledTypeRelationsEventArgs filledEventArgs)
+        {
+            if (FilledTypeRelations == null)
+                return;
+
+            FilledTypeRelations(this, filledEventArgs);
         }
 
         #endregion

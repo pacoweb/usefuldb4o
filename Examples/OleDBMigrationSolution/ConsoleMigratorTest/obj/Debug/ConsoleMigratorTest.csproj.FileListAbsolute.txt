@@ -1,0 +1,11 @@
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\obj\Debug\ResolveAssemblyReference.cache
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\ConsoleMigratorTest.exe
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\ConsoleMigratorTest.pdb
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\Example.Entities.dll
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\UsefulDB4O.dll
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\Db4objects.Db4o.dll
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\Db4objects.Db4o.xml
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\Example.Entities.pdb
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\UsefulDB4O.pdb
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\obj\Debug\ConsoleMigratorTest.exe
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\obj\Debug\ConsoleMigratorTest.pdb

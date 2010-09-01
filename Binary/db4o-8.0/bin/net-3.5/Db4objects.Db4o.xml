@@ -936,8 +936,8 @@
             <see cref="M:Db4objects.Db4o.IObjectContainer.Deactivate(System.Object,System.Int32)">IObjectContainer.Deactivate(object, depth)
             </see>
             can be used to manually free memory by deactivating objects.<br/><br/>
-            In client/server environment the same setting should be used on both
-            client and server<br/><br/>.
+            In client/server environment it is good practice to configure the
+            client and the server in exactly the same way. <br/><br/>.
             </remarks>
             <seealso cref="M:Db4objects.Db4o.Config.IObjectClass.MaximumActivationDepth(System.Int32)">configuring classes individually
             </seealso>
@@ -976,8 +976,8 @@
             <see cref="M:Db4objects.Db4o.IObjectContainer.Deactivate(System.Object,System.Int32)">IObjectContainer.Deactivate(object, depth)
             </see>
             can be used to manually free memory by deactivating objects.<br/><br/>
-            In client/server environment the same setting should be used on both
-            client and server<br/><br/>.
+            In client/server environment it is good practice to configure the
+            client and the server in exactly the same way. <br/><br/>.
             </remarks>
             <seealso cref="M:Db4objects.Db4o.Config.IObjectClass.MaximumActivationDepth(System.Int32)">configuring classes individually
             </seealso>
@@ -1009,8 +1009,6 @@
             <remarks>
             turns automatic shutdown of the engine on and off.
             The default and recommended setting is <code>true</code>.<br/><br/>
-            In client-server environment this setting should be used on both client
-            and server.
             </remarks>
         </member>
         <member name="P:Db4objects.Db4o.Config.ICommonConfiguration.BTreeNodeSize">
@@ -1058,8 +1056,8 @@
             </see>
             .
             <br/><br/>The default setting depends on the features supported by your current environment.<br/><br/>
-            In client/server environment this setting should be used on both
-            client and server.
+            In a client/server environment it is good practice to configure the
+            client and the server in exactly the same way.
             <br/><br/>
             </remarks>
             <seealso cref="M:Db4objects.Db4o.Config.IObjectClass.CallConstructor(System.Boolean)">Db4objects.Db4o.Config.IObjectClass.CallConstructor
@@ -1156,7 +1154,8 @@
             The following assemblies should be available for native query switch to take effect:
             Db4objects.Db4o.NativeQueries.dll, Db4objects.Db4o.Instrumentation.dll.
             <br/><br/>The default setting is <code>true</code>.<br/><br/>
-            In client-server environment this setting should be used on both client and server.<br/><br/>
+            In a client/server environment it is good practice to configure the
+            client and the server in exactly the same way. <br/><br/>
             </remarks>
             <seealso cref="P:Db4objects.Db4o.Config.ICommonConfiguration.OptimizeNativeQueries">Db4objects.Db4o.Config.ICommonConfiguration.OptimizeNativeQueries</seealso>
             <summary>
@@ -1171,7 +1170,8 @@
             The following assemblies should be available for native query switch to take effect:
             Db4objects.Db4o.NativeQueries.dll, Db4objects.Db4o.Instrumentation.dll.
             <br/><br/>The default setting is <code>true</code>.<br/><br/>
-            In client-server environment this setting should be used on both client and server.<br/><br/>
+            In a client/server environment it is good practice to configure the
+            client and the server in exactly the same way. <br/><br/>
             </remarks>
             <seealso cref="P:Db4objects.Db4o.Config.ICommonConfiguration.OptimizeNativeQueries">Db4objects.Db4o.Config.ICommonConfiguration.OptimizeNativeQueries</seealso>
         </member>
@@ -1217,7 +1217,9 @@
             not supplied from within the db4o library), the correct encoding
             needs to be configured correctly again for all subsequent calls
             that open database files.
-            <br/><br/>Example:<br/>
+            <br/><br/>
+            In client-server mode, the server and all clients need to have the same string encoding.<br/><br/>
+            Example:<br/>
             <code>config.StringEncoding = StringEncodings.Utf8();</code>
             </remarks>
             <seealso cref="T:Db4objects.Db4o.Config.Encoding.StringEncodings">Db4objects.Db4o.Config.Encoding.StringEncodings
@@ -2476,7 +2478,7 @@
             has no effect on open ObjectContainers. It will only affect how
             ObjectContainers are opened.<br/><br/>
             The default setting is <code>true</code>.<br/><br/>
-            In client-server environment this setting should be used on both client and server.<br/><br/>
+            
             </remarks>
         </member>
         <member name="P:Db4objects.Db4o.Config.IFileConfiguration.ReserveStorageSpace">
@@ -5738,6 +5740,21 @@
             </summary>
             <returns>a new IQuery object</returns>
         </member>
+        <member name="T:Db4objects.Db4o.Qlin.IQLinable">
+            <summary>support for the new experimental QLin ("Coolin") query interface.</summary>
+            <remarks>
+            support for the new experimental QLin ("Coolin") query interface.
+            We would really like to have LINQ for Java instead.
+            </remarks>
+            <since>8.0</since>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.IQLinable.From(System.Type)">
+            <summary>
+            starts a
+            <see cref="T:Db4objects.Db4o.Qlin.IQLin">IQLin</see>
+            query against a class.
+            </summary>
+        </member>
         <member name="M:Db4objects.Db4o.IObjectContainer.Activate(System.Object,System.Int32)">
             <summary>activates all members on a stored object to the specified depth.</summary>
             <remarks>
@@ -7737,25 +7754,6 @@
         <member name="T:Db4objects.Db4o.Foundation.Iterator4Impl">
             <exclude></exclude>
         </member>
-        <member name="T:Db4objects.Db4o.Foundation.Cool">
-            <summary>A collection of cool static methods that should be part of the runtime environment but are not.
-            	</summary>
-            <remarks>A collection of cool static methods that should be part of the runtime environment but are not.
-            	</remarks>
-            <exclude></exclude>
-        </member>
-        <member name="M:Db4objects.Db4o.Foundation.Cool.LoopWithTimeout(System.Int64,Db4objects.Db4o.Foundation.IConditionalBlock)">
-            <summary>
-            Keeps executing a block of code until it either returns false or millisecondsTimeout
-            elapses.
-            </summary>
-            <remarks>
-            Keeps executing a block of code until it either returns false or millisecondsTimeout
-            elapses.
-            </remarks>
-            <param name="millisecondsTimeout"></param>
-            <param name="block"></param>
-        </member>
         <member name="T:Db4objects.Db4o.Foundation.DynamicVariable">
             <summary>A dynamic variable is a value associated to a specific thread and scope.
             	</summary>
@@ -7988,7 +7986,7 @@
             <exclude></exclude>
         </member>
         <member name="T:Db4objects.Db4o.Foundation.List4">
-            <summary>elements in linked list Collection4</summary>
+            <summary>simplest possible linked list</summary>
             <exclude></exclude>
         </member>
         <member name="F:Db4objects.Db4o.Foundation.List4._next">
@@ -8012,6 +8010,26 @@
         </member>
         <member name="T:Db4objects.Db4o.Foundation.Runnable4">
             <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Foundation.Runtime4">
+            <summary>A collection of static methods that should be part of the runtime environment but are not.
+            	</summary>
+            <remarks>A collection of static methods that should be part of the runtime environment but are not.
+            	</remarks>
+            <exclude></exclude>
+        </member>
+        <member name="M:Db4objects.Db4o.Foundation.Runtime4.Sleep(System.Int64)">
+            <summary>sleeps without checked exceptions</summary>
+        </member>
+        <member name="M:Db4objects.Db4o.Foundation.Runtime4.Retry(System.Int64,Db4objects.Db4o.Foundation.IClosure4)">
+            <summary>
+            Keeps executing a block of code until it either returns true or millisecondsTimeout
+            elapses.
+            </summary>
+            <remarks>
+            Keeps executing a block of code until it either returns true or millisecondsTimeout
+            elapses.
+            </remarks>
         </member>
         <member name="T:Db4objects.Db4o.Foundation.SimpleTimer">
             <exclude></exclude>
@@ -11209,6 +11227,64 @@
         <member name="T:Db4objects.Db4o.Internal.PreparedArrayContainsComparison">
             <exclude></exclude>
         </member>
+        <member name="T:Db4objects.Db4o.Internal.Qlin.QLinConstraint">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Internal.Qlin.QLinSubNode">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Internal.Qlin.QLinSodaNode">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Internal.Qlin.QLinNode">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Qlin.IQLin">
+            <summary>a node in a QLin ("Coolin") query.</summary>
+            <remarks>
+            a node in a QLin ("Coolin") query.
+            QLin is a new experimental query interface.
+            We would really like to have LINQ for Java instead.
+            </remarks>
+            <since>8.0</since>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.IQLin.Where(System.Object)">
+            <summary>adds a where node to this QLin query.</summary>
+            <remarks>adds a where node to this QLin query.</remarks>
+            <param name="expression">can be any of the following:</param>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.IQLin.Select">
+            <summary>
+            executes the QLin query and returns the result
+            as an
+            <see cref="T:Db4objects.Db4o.IObjectSet">Db4objects.Db4o.IObjectSet</see>
+            .
+            Note that ObjectSet extends List and Iterable
+            on the platforms that support these interfaces.
+            You may want to use these interfaces instead of
+            working directly against an ObjectSet.
+            </summary>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.IQLin.OrderBy(System.Object,Db4objects.Db4o.Qlin.QLinOrderByDirection)">
+            <summary>orders the query by the expression.</summary>
+            <remarks>
+            orders the query by the expression.
+            Use the
+            <see cref="M:Db4objects.Db4o.Qlin.QLinSupport.Ascending">QLinSupport.Ascending()</see>
+            and
+            <see cref="M:Db4objects.Db4o.Qlin.QLinSupport.Descending">QLinSupport.Descending()</see>
+            helper methods to set the direction.
+            </remarks>
+        </member>
+        <member name="T:Db4objects.Db4o.Internal.Qlin.QLinField">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Internal.Qlin.QLinOrderBy">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Internal.Qlin.QLinRoot">
+            <exclude></exclude>
+        </member>
         <member name="T:Db4objects.Db4o.Internal.Query.IDb4oEnhancedFilter">
             <summary>FIXME: Rename to Db4oEnhancedPredicate</summary>
         </member>
@@ -12094,7 +12170,7 @@
             <exception cref="T:Db4objects.Db4o.Internal.ReflectException"></exception>
         </member>
         <member name="M:Db4objects.Db4o.Internal.Reflection4.GetFieldValue(System.Object,System.String)">
-            <exception cref="T:System.MemberAccessException"></exception>
+            <exception cref="T:Db4objects.Db4o.Internal.ReflectException"></exception>
         </member>
         <member name="T:Db4objects.Db4o.Internal.Replication.IDb4oReplicationReference">
             <exclude></exclude>
@@ -12363,6 +12439,162 @@
             <exclude></exclude>
             <persistent></persistent>
         </member>
+        <member name="T:Db4objects.Db4o.Qlin.Prototypes">
+            <summary>creates prototype objects for classes.</summary>
+            <remarks>
+            creates prototype objects for classes. Each field on prototype objects is set
+            to a newly created object or primitive that can be identified either by it's
+            identity or by an int ID that is generated by the system. Creation of fields
+            is recursed to the depth specified in the constructor.<br />
+            <br />
+            Allows analyzing expressions called on prototype objects to find the
+            underlying field that delivers the return value of the expression. Passed
+            expressions should not have side effects on objects, otherwise the
+            "prototype world" will no longer work.<br />
+            <br />
+            We plan to supply an ImmutableFieldClassLoader to instrument the code to
+            throw on every modification. This ClassLoader could also supply information
+            about all the method calls involved.<br />
+            <br />
+            For now our approach only works if expressions are directly backed by a
+            single field.<br />
+            <br />
+            We were inspired for this approach when we saw that Thomas Mueller managed to
+            map expressions to fields for his JaQu query interface, Kudos!
+            http://www.h2database.com/html/jaqu.html<br />
+            <br />
+            We took the idea a bit further and made it work for all primitives except for
+            boolean and we plan to also get deeper expressions, collections and
+            interfaces working nicely.
+            </remarks>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.Prototypes.PrototypeForClass(System.Type)">
+            <summary>returns a prototype object for a specific class.</summary>
+            <remarks>returns a prototype object for a specific class.</remarks>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.Prototypes.BackingFieldPath(System.Type,System.Object)">
+            <summary>
+            analyzes the passed expression and tries to find the path to the
+            backing field that is accessed.
+            </summary>
+            <remarks>
+            analyzes the passed expression and tries to find the path to the
+            backing field that is accessed.
+            </remarks>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.Prototypes.BackingFieldPath(Db4objects.Db4o.Reflect.IReflectClass,System.Object)">
+            <summary>
+            analyzes the passed expression and tries to find the path to the
+            backing field that is accessed.
+            </summary>
+            <remarks>
+            analyzes the passed expression and tries to find the path to the
+            backing field that is accessed.
+            </remarks>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.Prototypes.BackingFieldPath(System.String,System.Object)">
+            <summary>
+            analyzes the passed expression and tries to find the path to the
+            backing field that is accessed.
+            </summary>
+            <remarks>
+            analyzes the passed expression and tries to find the path to the
+            backing field that is accessed.
+            </remarks>
+        </member>
+        <member name="T:Db4objects.Db4o.Qlin.PrototypesException">
+            <summary>exception for the the Prototypes world.</summary>
+            <remarks>exception for the the Prototypes world.</remarks>
+        </member>
+        <member name="T:Db4objects.Db4o.Qlin.QLinException">
+            <summary>
+            exceptions to signal improper use of the
+            <see cref="T:Db4objects.Db4o.Qlin.IQLin">IQLin</see>
+            query interface.
+            </summary>
+        </member>
+        <member name="T:Db4objects.Db4o.Qlin.QLinOrderByDirection">
+            <summary>
+            Internal implementation class, access should not be necessary,
+            except for implementors.
+            </summary>
+            <remarks>
+            Internal implementation class, access should not be necessary,
+            except for implementors.
+            Use the static methods in
+            <see cref="T:Db4objects.Db4o.Qlin.QLinSupport">QLinSupport</see>
+            
+            <see cref="M:Db4objects.Db4o.Qlin.QLinSupport.Ascending">QLinSupport.Ascending()</see>
+            and
+            <see cref="M:Db4objects.Db4o.Qlin.QLinSupport.Descending">QLinSupport.Descending()</see>
+            </remarks>
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Qlin.QLinSupport">
+            <summary>
+            static import support class for
+            <see cref="T:Db4objects.Db4o.Qlin.IQLin">IQLin</see>
+            queries.
+            </summary>
+            <since>8.0</since>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.QLinSupport.Prototype(System.Type)">
+            <summary>
+            returns a prototype object for a specific class
+            to be passed to the where expression of a QLin
+            query.
+            </summary>
+            <remarks>
+            returns a prototype object for a specific class
+            to be passed to the where expression of a QLin
+            query.
+            </remarks>
+            <seealso cref="M:Db4objects.Db4o.Qlin.IQLin.Where(System.Object)">IQLin.Where(object)</seealso>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.QLinSupport.Context(Db4objects.Db4o.Reflect.IReflectClass)">
+            <summary>sets the context for the next query on this thread.</summary>
+            <remarks>
+            sets the context for the next query on this thread.
+            This method should never have to be called manually.
+            The framework should set the context up.
+            </remarks>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.QLinSupport.Context(System.Type)">
+            <summary>sets the context for the next query on this thread.</summary>
+            <remarks>
+            sets the context for the next query on this thread.
+            This method should never have to be called manually.
+            The framework should set the context up.
+            </remarks>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.QLinSupport.P(System.Type)">
+            <summary>
+            shortcut for the
+            <see cref="!:Prototype(System.Type&lt;T&gt;)">Prototype(System.Type&lt;T&gt;)</see>
+            method.
+            </summary>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.QLinSupport.Ascending">
+            <summary>
+            parameter for
+            <see cref="M:Db4objects.Db4o.Qlin.IQLin.OrderBy(System.Object,Db4objects.Db4o.Qlin.QLinOrderByDirection)">IQLin.OrderBy(object, QLinOrderByDirection)
+            	</see>
+            </summary>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.QLinSupport.Descending">
+            <summary>
+            parameter for
+            <see cref="M:Db4objects.Db4o.Qlin.IQLin.OrderBy(System.Object,Db4objects.Db4o.Qlin.QLinOrderByDirection)">IQLin.OrderBy(object, QLinOrderByDirection)
+            	</see>
+            </summary>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.QLinSupport.BackingFieldPath(System.Object)">
+            <summary>public for implementors, do not use directly</summary>
+        </member>
+        <member name="M:Db4objects.Db4o.Qlin.QLinSupport.Field(System.Object)">
+            <summary>converts an expression to a single field.</summary>
+            <remarks>converts an expression to a single field.</remarks>
+        </member>
         <member name="T:Db4objects.Db4o.Query.Predicate">
             <summary>Base class for native queries.</summary>
             <remarks>
@@ -12490,6 +12722,22 @@
             constructor has been found on earlier invocations.
             </remarks>
             <returns>true, if instances of this class can be created, false otherwise</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Reflect.IReflectClass.IsImmutable">
+            <summary>
+            We need this for replication, to find out if a class needs to be traversed
+            or if it simply can be copied across.
+            </summary>
+            <remarks>
+            We need this for replication, to find out if a class needs to be traversed
+            or if it simply can be copied across. For now we will simply return
+            the classes that are
+            <see cref="M:Db4objects.Db4o.Reflect.IReflectClass.IsPrimitive">IsPrimitive()</see>
+            and
+            <see cref="!:Db4objects.Db4o.Internal.Platform4.IsSimple(System.Type&lt;T&gt;)">Db4objects.Db4o.Internal.Platform4.IsSimple(System.Type&lt;T&gt;)
+            	</see>
+            We can think about letting users add an Immutable annotation.
+            </remarks>
         </member>
         <member name="T:Db4objects.Db4o.Reflect.Core.IReflectConstructor">
             <summary>Reflection Constructor representation.</summary>

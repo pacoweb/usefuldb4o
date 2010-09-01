@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{00C22AD8-F41A-4CF5-8186-04DD2F955B11}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Example.Entities</RootNamespace>
+    <AssemblyName>Example.Entities</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="dbo\AWBuildVersion.generated.cs" />
+    <Compile Include="dbo\DatabaseLog.generated.cs" />
+    <Compile Include="dbo\ErrorLog.generated.cs" />
+    <Compile Include="dbo\sysdiagrams.generated.cs" />
+    <Compile Include="HumanResources\Department.generated.cs" />
+    <Compile Include="HumanResources\Employee.generated.cs" />
+    <Compile Include="HumanResources\EmployeeAddress.generated.cs" />
+    <Compile Include="HumanResources\EmployeeDepartmentHistory.generated.cs" />
+    <Compile Include="HumanResources\EmployeePayHistory.generated.cs" />
+    <Compile Include="HumanResources\JobCandidate.generated.cs" />
+    <Compile Include="HumanResources\Shift.generated.cs" />
+    <Compile Include="Person\Address.generated.cs" />
+    <Compile Include="Person\AddressType.generated.cs" />
+    <Compile Include="Person\Contact.generated.cs" />
+    <Compile Include="Person\ContactType.generated.cs" />
+    <Compile Include="Person\CountryRegion.generated.cs" />
+    <Compile Include="Person\StateProvince.generated.cs" />
+    <Compile Include="Production\BillOfMaterials.generated.cs" />
+    <Compile Include="Production\Culture.generated.cs" />
+    <Compile Include="Production\Document.generated.cs" />
+    <Compile Include="Production\Illustration.generated.cs" />
+    <Compile Include="Production\Location.generated.cs" />
+    <Compile Include="Production\Product.generated.cs" />
+    <Compile Include="Production\ProductCategory.generated.cs" />
+    <Compile Include="Production\ProductCostHistory.generated.cs" />
+    <Compile Include="Production\ProductDescription.generated.cs" />
+    <Compile Include="Production\ProductDocument.generated.cs" />
+    <Compile Include="Production\ProductInventory.generated.cs" />
+    <Compile Include="Production\ProductListPriceHistory.generated.cs" />
+    <Compile Include="Production\ProductModel.generated.cs" />
+    <Compile Include="Production\ProductModelIllustration.generated.cs" />
+    <Compile Include="Production\ProductModelProductDescriptionCulture.generated.cs" />
+    <Compile Include="Production\ProductPhoto.generated.cs" />
+    <Compile Include="Production\ProductProductPhoto.generated.cs" />
+    <Compile Include="Production\ProductReview.generated.cs" />
+    <Compile Include="Production\ProductSubcategory.generated.cs" />
+    <Compile Include="Production\ScrapReason.generated.cs" />
+    <Compile Include="Production\TransactionHistory.generated.cs" />
+    <Compile Include="Production\TransactionHistoryArchive.generated.cs" />
+    <Compile Include="Production\UnitMeasure.generated.cs" />
+    <Compile Include="Production\WorkOrder.generated.cs" />
+    <Compile Include="Production\WorkOrderRouting.generated.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Purchasing\ProductVendor.generated.cs" />
+    <Compile Include="Purchasing\PurchaseOrderDetail.generated.cs" />
+    <Compile Include="Purchasing\PurchaseOrderHeader.generated.cs" />
+    <Compile Include="Purchasing\ShipMethod.generated.cs" />
+    <Compile Include="Purchasing\Vendor.generated.cs" />
+    <Compile Include="Purchasing\VendorAddress.generated.cs" />
+    <Compile Include="Purchasing\VendorContact.generated.cs" />
+    <Compile Include="Sales\ContactCreditCard.generated.cs" />
+    <Compile Include="Sales\CountryRegionCurrency.generated.cs" />
+    <Compile Include="Sales\CreditCard.generated.cs" />
+    <Compile Include="Sales\Currency.generated.cs" />
+    <Compile Include="Sales\CurrencyRate.generated.cs" />
+    <Compile Include="Sales\Customer.generated.cs" />
+    <Compile Include="Sales\CustomerAddress.generated.cs" />
+    <Compile Include="Sales\Individual.generated.cs" />
+    <Compile Include="Sales\SalesOrderDetail.generated.cs" />
+    <Compile Include="Sales\SalesOrderHeader.generated.cs" />
+    <Compile Include="Sales\SalesOrderHeaderSalesReason.generated.cs" />
+    <Compile Include="Sales\SalesPerson.generated.cs" />
+    <Compile Include="Sales\SalesPersonQuotaHistory.generated.cs" />
+    <Compile Include="Sales\SalesReason.generated.cs" />
+    <Compile Include="Sales\SalesTaxRate.generated.cs" />
+    <Compile Include="Sales\SalesTerritory.generated.cs" />
+    <Compile Include="Sales\SalesTerritoryHistory.generated.cs" />
+    <Compile Include="Sales\ShoppingCartItem.generated.cs" />
+    <Compile Include="Sales\SpecialOffer.generated.cs" />
+    <Compile Include="Sales\SpecialOfferProduct.generated.cs" />
+    <Compile Include="Sales\Store.generated.cs" />
+    <Compile Include="Sales\StoreContact.generated.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassTemplate.null">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClassTemplate.tt</DependentUpon>
+    </None>
+    <None Include="ClassTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ClassTemplate.null</LastGenOutput>
+    </None>
+    <None Include="DatabaseToModelGenerator.null">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseToModelGenerator.tt</DependentUpon>
+    </None>
+    <None Include="DatabaseToModelGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DatabaseToModelGenerator.null</LastGenOutput>
+    </None>
+    <None Include="ModelFromDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelFromDatabase.txt</LastGenOutput>
+    </None>
+    <None Include="ModelFromDatabase.tt.log">
+      <DependentUpon>ModelFromDatabase.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelFromDatabase.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelFromDatabase.tt</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\UsefulDB4O\UsefulDB4O.csproj">
+      <Project>{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}</Project>
+      <Name>UsefulDB4O</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

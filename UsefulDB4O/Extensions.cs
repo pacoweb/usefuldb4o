@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Db4objects.Db4o;
-using System.Reflection;
-using System.Threading;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Reflection;
+
+using Db4objects.Db4o;
 
 namespace UsefulDB4O
 {
     public static class Extensions
     {
 
+        /// <summary>
+        /// Toes the list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectSet">The object set.</param>
+        /// <returns></returns>
         public static IList<T> ToList<T>(this IObjectSet objectSet)
         {
             int totalCount;
@@ -18,6 +24,14 @@ namespace UsefulDB4O
             return objectSet.ToInternalPagedList<T>(null, null, -1, -1, out totalCount);
         }
 
+        /// <summary>
+        /// Toes the list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectSet">The object set.</param>
+        /// <param name="container">The container.</param>
+        /// <param name="activateDepth">The activate depth.</param>
+        /// <returns></returns>
         public static IList<T> ToList<T>(this IObjectSet objectSet, IObjectContainer container, int? activateDepth)
         {
             int totalCount;
@@ -25,20 +39,41 @@ namespace UsefulDB4O
             return objectSet.ToInternalPagedList<T>(container, activateDepth, -1, -1, out totalCount);
         }
 
+        /// <summary>
+        /// Toes the paged list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectSet">The object set.</param>
+        /// <param name="maximumRows">The maximum rows.</param>
+        /// <param name="startRowIndex">Start index of the row.</param>
+        /// <param name="totalCount">The total count.</param>
+        /// <returns></returns>
         public static IList<T> ToPagedList<T>(this IObjectSet objectSet, int maximumRows, int startRowIndex, out int totalCount)
         {
-            totalCount = 0;
-
             return objectSet.ToInternalPagedList<T>(null, null, maximumRows, startRowIndex, out totalCount);
         }
 
+        /// <summary>
+        /// Toes the paged list.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="objectSet">The object set.</param>
+        /// <param name="container">The container.</param>
+        /// <param name="activateDepth">The activate depth.</param>
+        /// <param name="maximumRows">The maximum rows.</param>
+        /// <param name="startRowIndex">Start index of the row.</param>
+        /// <param name="totalCount">The total count.</param>
+        /// <returns></returns>
         public static IList<T> ToPagedList<T>(this IObjectSet objectSet, IObjectContainer container, int? activateDepth, int maximumRows, int startRowIndex, out int totalCount)
         {
-            totalCount = 0;
-
             return objectSet.ToInternalPagedList<T>(container, activateDepth, maximumRows, startRowIndex, out totalCount);
         }
 
+        /// <summary>
+        /// Gets the count.
+        /// </summary>
+        /// <param name="objectSet">The object set.</param>
+        /// <returns></returns>
         public static int GetCount(this IObjectSet objectSet)
         {
             return objectSet.Ext().GetIDs().Length;
@@ -63,7 +98,7 @@ namespace UsefulDB4O
         {
             var attribs = memberInfo.GetCustomAttributes(typeof(T), false);
 
-            if (attribs != null && attribs.Length > 0)
+            if (attribs.Length > 0)
                 return (T)attribs[0];
 
             return null;

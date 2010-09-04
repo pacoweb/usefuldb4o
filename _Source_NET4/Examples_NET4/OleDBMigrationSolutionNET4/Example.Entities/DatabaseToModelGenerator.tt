@@ -1,0 +1,515 @@
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.Data.DataSetExtensions" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.OleDb" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Globalization" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+
+<#@ include file="ClassTemplate.tt" #>
+<#+
+
+public struct GeneratorConfig
+{
+	public string AssemblyName;
+	public string NamespaceBase;
+	
+	public bool UseDataBaseSchemaAsNamespacePart;
+	public bool UseDataAnnotationAttributes;
+	public bool UsefulDB4OConfigurationAttributes;
+	
+	public bool UseINotifyPropertyChanged;
+	
+	public List<string> TablesToExclude;
+	public CollectionsType TypeOfCollections;
+	public CloneType CloneMode;
+	
+}
+
+public enum CollectionsType
+{
+	ObservableCollection = 0,
+	Collection
+}
+
+public enum CloneType
+{ 
+	DataBaseEqual = 0,
+	Oop,
+	OopWithPk,
+	OopWithPkAndFk,
+	ToEnableDataMigration
+}
+
+public class TableRelation
+{
+	public TableData ParentTable;
+	public TableData ChildTable;
+	public string    RelationName;
+	public string	 CodeRelationName;
+	public int		 SameTablesNumber;
+	
+	public List<ColumnData> ParentColumns;
+	public List<ColumnData> ChildColumns;
+	public List<string> PrivateFieldNames;
+	
+}
+
+public class TableData
+{
+	public string TableName;
+	public string ClassName;
+	public string PrivateFieldName;
+	public string SchemaName;
+	public string Namespace;
+	public List<ColumnData> Columns;
+	public List<TableRelation> ParentRelations;
+	public List<TableRelation> ChildRelations;
+	public bool HasMultiplesPrimaryKeys;
+}
+
+public class ColumnData
+{
+	public Type CodeType;
+	public string CodeTypeString;
+	public string ColumnName;
+	public OleDbType ColumnType;
+	
+	public bool IsNullable;
+	public bool IsIndexed;
+	public bool IsUniqueIndex;
+	public bool IsPrimaryKey;
+	public bool IsForeignKeyParent;
+	public bool IsForeignKeyChild;
+	
+	public string PropertyName;
+	public string PrivateFieldName;
+
+	public int StringMaxLength;
+}
+	
+public class DatabaseToModelGenerator : Generator
+{
+	public string DataBaseConnectionString;
+	
+	private GeneratorConfig _config;
+	private OleDbConnection _con;
+	private List<TableData> _tables;
+	
+	public DatabaseToModelGenerator(GeneratorConfig config) : base()
+	{
+		//VALIDATIONS
+		if(String.IsNullOrEmpty(config.AssemblyName))
+			throw new Exception("You have set the AssemblyName property.");
+		
+		if(config.CloneMode == CloneType.ToEnableDataMigration && !config.UsefulDB4OConfigurationAttributes)
+			throw new Exception("If CloneMode is ToEnableDataMigration you must set UsefulDB4OConfigurationAttributes to true");
+		
+		_config = config;
+	}
+
+	protected override void RunCore()
+	{
+		if(String.IsNullOrEmpty(DataBaseConnectionString))
+			return;
+		
+		using(_con = new OleDbConnection(DataBaseConnectionString))
+		{
+			_con.Open();
+			
+			FillTableData();
+			FillColumnIndexesData();
+			FillColumnPrimaryKeysData();
+			FillColumnForeigKeysData();
+		}
+		
+		if(_tables == null || _tables.Count == 0)
+			return;
+			
+		var classTemplate	 = new ClassTemplate();
+		classTemplate.Config = _config; 
+		
+		foreach(var tableInfo in _tables)
+		{
+			classTemplate.TableInfo = tableInfo;
+			
+			var relativePath = tableInfo.Namespace.Replace(_config.AssemblyName, String.Empty)
+													.TrimStart('.').Replace('.', '/');
+			classTemplate.RenderToFile(
+				String.Format("{0}{1}.generated.cs", 
+					String.IsNullOrEmpty(relativePath) ? "dbo/" : relativePath + "/" ,
+					tableInfo.TableName)
+			);
+		}
+	}
+	
+	private void FillTableData()
+	{
+		var schemaTable = _con.GetOleDbSchemaTable(OleDbSchemaGuid.Tables,
+		new object[] {null, null, null, "TABLE"});
+
+		if(schemaTable != null && schemaTable.Rows.Count > 0)
+		{
+			_tables = new List<TableData>();
+
+			foreach (DataRow row in schemaTable.Rows){
+				var tableData = GetTableInformation(row);
+				if(tableData != null){_tables.Add(tableData);}
+			}
+		}
+	}
+	
+	private void FillColumnIndexesData()
+	{
+		var schemaColumns = _con.GetOleDbSchemaTable(OleDbSchemaGuid.Indexes,
+              new object[] {null, null, null, null});
+        
+        if(schemaColumns == null || schemaColumns.Rows.Count == 0)
+			return;
+
+		var dvSchema  = new DataView(schemaColumns);
+		dvSchema.Sort = "INDEX_NAME";
+		
+        foreach(var tableInfo in _tables)
+		{
+			dvSchema.RowFilter = String.Format("TABLE_NAME='{0}'", tableInfo.TableName);
+			
+			foreach (DataRowView row in dvSchema)
+			{
+				var columnName		= Convert.ToString(row["COLUMN_NAME"]);
+				var indexName		= Convert.ToString(row["INDEX_NAME"]);
+				var isUnique		= Convert.ToBoolean(row["UNIQUE"]);
+				
+				var multipleColumns = dvSchema.FindRows(indexName).Length > 1 ? true : false;
+				var colInfo			= tableInfo.Columns.Where(col => col.ColumnName == columnName)
+										   .FirstOrDefault();
+				
+				colInfo.IsIndexed		= true;
+				colInfo.IsUniqueIndex	= !multipleColumns && isUnique;
+			}
+		}
+	}
+	
+	private void FillColumnPrimaryKeysData()
+	{
+		var schemaColumns = _con.GetOleDbSchemaTable(OleDbSchemaGuid.Primary_Keys,
+              new object[] {null, null, null});
+        
+        if(schemaColumns == null || schemaColumns.Rows.Count == 0)
+			return;
+
+		var dvSchema  = new DataView(schemaColumns);
+		dvSchema.Sort = "TABLE_NAME ASC, COLUMN_NAME ASC";
+		
+        foreach(var tableInfo in _tables)
+		{
+			dvSchema.RowFilter = String.Format("TABLE_NAME='{0}'", tableInfo.TableName);
+			
+			var count = 0;
+			
+			foreach(DataRowView row in dvSchema)
+			{
+				var columnName = Convert.ToString(row["COLUMN_NAME"]);
+
+				var colInfo = tableInfo.Columns.Where(col => col.ColumnName == columnName)
+						   .FirstOrDefault();
+
+				colInfo.IsPrimaryKey = true;
+				
+				count++;
+			}
+			
+			if(count > 1)
+				tableInfo.HasMultiplesPrimaryKeys = true;
+			
+		}
+	}
+	
+	private void FillColumnForeigKeysData()
+	{
+		var schemaColumns = _con.GetOleDbSchemaTable(OleDbSchemaGuid.Foreign_Keys,
+              new object[] {null, null, null, null});
+        
+        if(schemaColumns == null || schemaColumns.Rows.Count == 0)
+			return;
+        
+        var relationGroupByQuery = from dr in schemaColumns.AsEnumerable()
+                           group dr by dr.Field<string>("FK_NAME") into relationGroup
+                           select new{
+                               RelationName = relationGroup.Key,
+                               RelationRows = relationGroup
+                           };
+		
+		var allRelations = new List<TableRelation>();
+		
+		foreach (var relation in relationGroupByQuery)
+		{
+			var relationName = relation.RelationName;
+			var firstRelationRow = relation.RelationRows.First();
+			
+			var tableParentName = Convert.ToString(firstRelationRow["PK_TABLE_NAME"]);
+			var tableChildName  = Convert.ToString(firstRelationRow["FK_TABLE_NAME"]);
+			
+			var tableParentInfo = _tables.Where(tbl => tbl.TableName == tableParentName).SingleOrDefault();
+			var tableChildInfo  = _tables.Where(tbl => tbl.TableName == tableChildName).SingleOrDefault();
+			
+			if(tableParentInfo == null || tableChildInfo == null)
+				continue;
+			
+			var newRelation = new TableRelation(){ 
+								ParentTable   = tableParentInfo, 
+								ChildTable    = tableChildInfo,
+								ParentColumns = new List<ColumnData>(),
+								ChildColumns  = new List<ColumnData>(),
+								PrivateFieldNames  = new List<string>()};
+			
+			newRelation.SameTablesNumber = allRelations.Count(rel => rel.ParentTable == tableParentInfo
+												&& rel.ChildTable == tableChildInfo) + 1;
+			
+			foreach(var relationRow in relation.RelationRows)
+			{
+				var parentColumnName = Convert.ToString(relationRow["PK_COLUMN_NAME"]);
+				var childColumnName	 = Convert.ToString(relationRow["FK_COLUMN_NAME"]);
+				
+				var parentColumn = tableParentInfo.Columns.Where(col => col.ColumnName == parentColumnName).Single();
+				var childColumn	 = tableChildInfo.Columns.Where(col => col.ColumnName == childColumnName).Single();
+				
+				parentColumn.IsForeignKeyParent = true;
+				childColumn.IsForeignKeyChild	= true;
+				
+				newRelation.ParentColumns.Add(parentColumn);
+				newRelation.ChildColumns.Add(childColumn);
+				newRelation.PrivateFieldNames.Add(GetCleanCodeName(parentColumnName, true));
+			}
+			
+			allRelations.Add(newRelation);
+			
+			if(tableParentInfo.ChildRelations == null) 
+				tableParentInfo.ChildRelations = new List<TableRelation>();
+			
+			tableParentInfo.ChildRelations.Add(newRelation);
+			
+			if(tableChildInfo.ParentRelations == null)
+				tableChildInfo.ParentRelations = new List<TableRelation>();
+			
+			tableChildInfo.ParentRelations.Add(newRelation);
+		}
+		
+	}
+
+	private TableData GetTableInformation(DataRow tableInfoRow)
+	{
+		var tableName  = Convert.ToString(tableInfoRow["TABLE_NAME"]);
+		var schemaName = Convert.ToString(tableInfoRow["TABLE_SCHEMA"]);
+		
+		if(_config.TablesToExclude != null && _config.TablesToExclude.Count > 0)
+		{
+			var completeTableName = String.Format("{0}.{1}", schemaName, tableName);
+			if(_config.TablesToExclude.Contains(completeTableName)){return null;}
+			if(schemaName.ToLower().Trim() == "dbo"){
+				if(_config.TablesToExclude.Contains(tableName)){return null;}
+			}
+		}
+		
+		var tableInfo = new TableData(){
+			TableName = tableName,
+			SchemaName = schemaName,
+			Namespace = GetNamespace(schemaName),
+			ClassName = GetCleanCodeName(tableName, false),
+			PrivateFieldName = GetCleanCodeName(tableName, true),
+			Columns = new List<ColumnData>()
+		};
+		
+		var schemaColumns = _con.GetOleDbSchemaTable(OleDbSchemaGuid.Columns,
+                      new object[] {null, null, tableInfo.TableName, null});
+        
+		if(schemaColumns != null && schemaColumns.Rows.Count > 0)
+		{
+			var dvSchema  = new DataView(schemaColumns);
+			dvSchema.Sort = "ORDINAL_POSITION";
+			
+			foreach (DataRowView row in dvSchema)
+				tableInfo.Columns.Add(GetColumnInformation(row, tableInfo.ClassName));
+		}
+			
+		return tableInfo;
+	}
+	
+	private ColumnData GetColumnInformation(DataRowView columnInfoRow, string className)
+	{
+		//ORDINAL_POSITION, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION, IS_NULLABLE 
+		
+		var columnName = Convert.ToString(columnInfoRow["COLUMN_NAME"]);
+		var columnType = OleDbType.IUnknown;
+		
+		var type = columnInfoRow["DATA_TYPE"];
+
+		if(type != null && type != DBNull.Value){
+			columnType = (OleDbType)type;
+			
+			//UNKNWONS TYPES (141, etc)
+			if(Regex.IsMatch(columnType.ToString().Trim(), @"\d+"))
+				columnType = OleDbType.IUnknown;
+			
+		}
+		
+		var codeType = GetCodeType(columnType);
+		
+		var propertyName = GetCleanCodeName(columnName, false);
+		var privateName  = GetCleanCodeName(columnName, true);
+		
+		if(String.Compare(propertyName, className) == 0)
+		{
+			propertyName = String.Format("{0}Property", propertyName);
+			privateName  = String.Format("{0}Property", privateName);
+		}
+
+		var columnInfo = new ColumnData(){
+			CodeType			= codeType,
+			CodeTypeString		= codeType.Name,
+			ColumnName			= columnName,
+			ColumnType			= columnType,
+			IsNullable			= Convert.ToBoolean(columnInfoRow["IS_NULLABLE"]),
+			PrivateFieldName	= privateName,
+			PropertyName		= propertyName,
+			StringMaxLength		= columnInfoRow["CHARACTER_MAXIMUM_LENGTH"] == null 
+									|| columnInfoRow["CHARACTER_MAXIMUM_LENGTH"] == DBNull.Value ? -1 : Convert.ToInt32(columnInfoRow["CHARACTER_MAXIMUM_LENGTH"])
+		};
+	
+		return columnInfo;
+	}
+
+	private string GetCleanCodeName(string name, bool isPrivateField)
+	{
+		if(String.IsNullOrEmpty(name))
+			return String.Empty;
+		
+		var newName = name;
+		
+		if(name.IndexOf("-") != -1 || name.IndexOf("_") != -1)
+		{
+			newName = Regex.Replace(name, "-|_", " ");
+			var txtInfo = new CultureInfo("en-US", false).TextInfo;
+			newName = txtInfo.ToTitleCase(newName);
+		}
+
+		newName = Regex.Replace(newName, @"\s+", String.Empty);
+		
+		string firstLetter   = newName.Substring(0, 1);
+		string othersLetters = newName.Substring(1);
+		
+		if(isPrivateField)
+			newName = String.Format("_{0}{1}", firstLetter.ToLower(), othersLetters);
+		else
+			newName = String.Format("{0}{1}", firstLetter.ToUpper(), othersLetters);
+		
+		return newName;
+	}
+	
+	private string GetNamespace(string schemaName)
+	{
+		var blderNamespace = new StringBuilder();
+		
+		blderNamespace.Append(_config.AssemblyName);
+		
+		if(!String.IsNullOrEmpty(_config.NamespaceBase))
+			blderNamespace.AppendFormat(".{0}", _config.NamespaceBase);
+		
+		if(!_config.UseDataBaseSchemaAsNamespacePart
+				|| String.IsNullOrEmpty(schemaName) 
+					|| schemaName.ToLower().Trim() == "dbo")
+			return blderNamespace.ToString();
+		
+		blderNamespace.AppendFormat(".{0}", schemaName);
+		
+		return blderNamespace.ToString();
+	}
+	
+	private Type GetCodeType(OleDbType oledbType)
+	{
+		var type = Type.GetType("System.Object");
+		
+		switch (oledbType)
+        {
+	        case	OleDbType.BSTR:
+			case	OleDbType.Char: 
+			case	OleDbType.LongVarChar:
+			case	OleDbType.LongVarWChar: 
+			case	OleDbType.VarChar:
+			case	OleDbType.VarWChar: 
+			case	OleDbType.WChar:
+					type = Type.GetType("System.String");
+             break;
+            case OleDbType.BigInt:
+					type = Type.GetType("System.Int64");
+             break;
+            case	OleDbType.Binary:
+			case	OleDbType.LongVarBinary: 
+			case	OleDbType.VarBinary:
+					
+					type = Type.GetType("System.Byte[]");
+             break;
+            case OleDbType.Boolean:
+					type = Type.GetType("System.Boolean");
+             break;
+            case OleDbType.DBTime:
+					type = Type.GetType("System.TimeSpan");
+             break;
+            case	OleDbType.Date: 
+			case	OleDbType.DBDate: 
+			case	OleDbType.Filetime: 
+			case	OleDbType.DBTimeStamp:
+					type = Type.GetType("System.DateTime");
+             break;
+            case	OleDbType.Decimal:
+			case	OleDbType.VarNumeric: 
+			case	OleDbType.Currency:
+			case	OleDbType.Numeric:
+					type = Type.GetType("System.Decimal");
+             break;
+            case OleDbType.Double:
+					type = Type.GetType("System.Double");
+             break;
+            case OleDbType.Error:
+					type = Type.GetType("System.Exception");
+             break;
+            case OleDbType.Guid:
+					type = Type.GetType("System.Guid");
+             break;
+            case OleDbType.Integer:
+					type = Type.GetType("System.Int32");
+             break;
+            case OleDbType.Single:
+					type = Type.GetType("System.Single");
+             break;
+            case OleDbType.SmallInt:
+					type = Type.GetType("System.Int16");
+             break;
+            case OleDbType.TinyInt:	
+					type = Type.GetType("System.SByte");
+             break;
+            case OleDbType.UnsignedBigInt:
+					type = Type.GetType("System.UInt64");
+             break;
+            case OleDbType.UnsignedInt:
+					type = Type.GetType("System.UInt32");
+             break;
+            case OleDbType.UnsignedSmallInt:
+					type = Type.GetType("System.UInt16");
+             break;
+            case OleDbType.UnsignedTinyInt:
+					type = Type.GetType("System.Byte");
+             break;
+            default:
+					type = Type.GetType("System.Object");
+             break;
+        }
+        
+        return type;
+	}
+	
+}
+#>

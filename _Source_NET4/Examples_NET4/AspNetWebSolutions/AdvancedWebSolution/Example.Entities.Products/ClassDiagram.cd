@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Example.Entities.Products.Category">
+    <Position X="1.25" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="CategoryProducts" Type="Example.Entities.Products.Product">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.946" Y="-3.431" Height="0.16" Width="1.703" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAABAgAAAAABAAAAAACAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Category.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="CategoryProducts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Example.Entities.Products.Product">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="ProductCategory" Type="Example.Entities.Products.Category">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="1.542" Y="3.298" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AgAAIAAAAQAAgAAAAgBAAAQAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Product.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ProductCategory" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

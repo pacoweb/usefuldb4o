@@ -24,6 +24,7 @@ namespace UsefulDB4O
             return objectSet.ToInternalPagedList<T>(null, null, -1, -1, out totalCount);
         }
 
+
         /// <summary>
         /// Toes the list.
         /// </summary>
@@ -39,6 +40,7 @@ namespace UsefulDB4O
             return objectSet.ToInternalPagedList<T>(container, activateDepth, -1, -1, out totalCount);
         }
 
+
         /// <summary>
         /// Toes the paged list.
         /// </summary>
@@ -52,6 +54,7 @@ namespace UsefulDB4O
         {
             return objectSet.ToInternalPagedList<T>(null, null, maximumRows, startRowIndex, out totalCount);
         }
+
 
         /// <summary>
         /// Toes the paged list.
@@ -69,6 +72,7 @@ namespace UsefulDB4O
             return objectSet.ToInternalPagedList<T>(container, activateDepth, maximumRows, startRowIndex, out totalCount);
         }
 
+
         /// <summary>
         /// Gets the count.
         /// </summary>
@@ -76,8 +80,12 @@ namespace UsefulDB4O
         /// <returns></returns>
         public static int GetCount(this IObjectSet objectSet)
         {
+            if (objectSet == null)
+                throw new ArgumentNullException("objectSet");
+
             return objectSet.Ext().GetIDs().Length;
         }
+
 
         #region INTERNAL EXTENSIONS
 

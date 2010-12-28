@@ -1,0 +1,11 @@
+C:\Source\Examples\AspNetWebSolutions\AdvancedWebSolution\Example.Entities.Products\bin\Debug\Example.Entities.Products.dll
+C:\Source\Examples\AspNetWebSolutions\AdvancedWebSolution\Example.Entities.Products\bin\Debug\Example.Entities.Products.pdb
+C:\Source\Examples\AspNetWebSolutions\AdvancedWebSolution\Example.Entities.Products\bin\Debug\Db4objects.Db4o.dll
+C:\Source\Examples\AspNetWebSolutions\AdvancedWebSolution\Example.Entities.Products\bin\Debug\UsefulDB4O.dll
+C:\Source\Examples\AspNetWebSolutions\AdvancedWebSolution\Example.Entities.Products\bin\Debug\Db4objects.Db4o.CS.dll
+C:\Source\Examples\AspNetWebSolutions\AdvancedWebSolution\Example.Entities.Products\bin\Debug\Db4objects.Db4o.CS.xml
+C:\Source\Examples\AspNetWebSolutions\AdvancedWebSolution\Example.Entities.Products\bin\Debug\Db4objects.Db4o.xml
+C:\Source\Examples\AspNetWebSolutions\AdvancedWebSolution\Example.Entities.Products\bin\Debug\UsefulDB4O.pdb
+C:\Source\Examples\AspNetWebSolutions\AdvancedWebSolution\Example.Entities.Products\obj\Debug\ResolveAssemblyReference.cache
+C:\Source\Examples\AspNetWebSolutions\AdvancedWebSolution\Example.Entities.Products\obj\Debug\Example.Entities.Products.dll
+C:\Source\Examples\AspNetWebSolutions\AdvancedWebSolution\Example.Entities.Products\obj\Debug\Example.Entities.Products.pdb

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsefulDB4O", "..\..\..\UsefulDB4O\UsefulDB4O.csproj", "{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedWebApplication", "AdvancedWebApplication\AdvancedWebApplication.csproj", "{EBFE3566-231B-461F-B203-F45EC6424213}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example.Entities.Products", "Example.Entities.Products\Example.Entities.Products.csproj", "{BBD45AE3-E697-41FD-9D40-DE1F7FEAFDAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBFE3566-231B-461F-B203-F45EC6424213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBFE3566-231B-461F-B203-F45EC6424213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBFE3566-231B-461F-B203-F45EC6424213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBFE3566-231B-461F-B203-F45EC6424213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBD45AE3-E697-41FD-9D40-DE1F7FEAFDAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBD45AE3-E697-41FD-9D40-DE1F7FEAFDAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBD45AE3-E697-41FD-9D40-DE1F7FEAFDAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBD45AE3-E697-41FD-9D40-DE1F7FEAFDAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

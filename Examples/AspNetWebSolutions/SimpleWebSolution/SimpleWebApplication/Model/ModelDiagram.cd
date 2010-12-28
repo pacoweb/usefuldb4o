@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SimpleWebApplication.Model.Product">
+    <Position X="4.25" Y="1.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="CategoryOfProduct" Type="SimpleWebApplication.Model.Category">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-2.929" Y="0.412" Height="0.182" Width="1.482" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EgAAIAAAAQAAAAAAAAAAAAQAACAAACEAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Product.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CategoryOfProduct" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SimpleWebApplication.Model.Category">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Products" Type="SimpleWebApplication.Model.Product">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="2.3" Y="0.37" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACIAACAAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAQ=</HashCode>
+      <FileName>Model\Category.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Products" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

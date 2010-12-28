@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWebApplication", "SimpleWebApplication\SimpleWebApplication.csproj", "{F16CBE6F-129F-42D4-BDAC-8C8B4D58B27F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsefulDB4O", "..\..\..\..\..\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\UsefulDB4O.csproj", "{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F16CBE6F-129F-42D4-BDAC-8C8B4D58B27F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F16CBE6F-129F-42D4-BDAC-8C8B4D58B27F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F16CBE6F-129F-42D4-BDAC-8C8B4D58B27F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F16CBE6F-129F-42D4-BDAC-8C8B4D58B27F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

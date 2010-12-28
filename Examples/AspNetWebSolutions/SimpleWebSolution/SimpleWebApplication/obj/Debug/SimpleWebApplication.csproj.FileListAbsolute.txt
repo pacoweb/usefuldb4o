@@ -1,0 +1,11 @@
+C:\Source\Examples\AspNetWebSolutions\SimpleWebSolution\SimpleWebApplication\bin\SimpleWebApplication.dll
+C:\Source\Examples\AspNetWebSolutions\SimpleWebSolution\SimpleWebApplication\bin\SimpleWebApplication.pdb
+C:\Source\Examples\AspNetWebSolutions\SimpleWebSolution\SimpleWebApplication\bin\Db4objects.Db4o.dll
+C:\Source\Examples\AspNetWebSolutions\SimpleWebSolution\SimpleWebApplication\bin\UsefulDB4O.dll
+C:\Source\Examples\AspNetWebSolutions\SimpleWebSolution\SimpleWebApplication\bin\Db4objects.Db4o.CS.dll
+C:\Source\Examples\AspNetWebSolutions\SimpleWebSolution\SimpleWebApplication\bin\Db4objects.Db4o.CS.xml
+C:\Source\Examples\AspNetWebSolutions\SimpleWebSolution\SimpleWebApplication\bin\Db4objects.Db4o.xml
+C:\Source\Examples\AspNetWebSolutions\SimpleWebSolution\SimpleWebApplication\bin\UsefulDB4O.pdb
+C:\Source\Examples\AspNetWebSolutions\SimpleWebSolution\SimpleWebApplication\obj\Debug\ResolveAssemblyReference.cache
+C:\Source\Examples\AspNetWebSolutions\SimpleWebSolution\SimpleWebApplication\obj\Debug\SimpleWebApplication.dll
+C:\Source\Examples\AspNetWebSolutions\SimpleWebSolution\SimpleWebApplication\obj\Debug\SimpleWebApplication.pdb

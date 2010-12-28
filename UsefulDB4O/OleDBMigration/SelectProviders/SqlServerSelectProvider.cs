@@ -1,5 +1,5 @@
-﻿using System.Text;
-using System;
+﻿using System;
+using System.Text;
 
 namespace UsefulDB4O.OleDBMigration.SelectProviders
 {
@@ -7,6 +7,13 @@ namespace UsefulDB4O.OleDBMigration.SelectProviders
     {
         #region Miembros de ISelectProvider
 
+        /// <summary>
+        /// Gets the SQL query for Sql Server
+        /// </summary>
+        /// <param name="tableName">Name of the table.</param>
+        /// <param name="columnNames">The column names.</param>
+        /// <param name="topRows">The top rows.</param>
+        /// <returns></returns>
         public string GetSqlQuery(string tableName, string[] columnNames, int topRows)
         {
             if (String.IsNullOrEmpty(tableName))

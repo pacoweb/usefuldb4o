@@ -1,14 +1,21 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
+
 using Db4objects.Db4o.Config;
 using Db4objects.Db4o.Constraints;
-using System.Collections.ObjectModel;
+
 
 namespace UsefulDB4O.DatabaseConfig
 {
     public static class ConfigGenerator
     {
+        /// <summary>
+        /// Gets the config from attributes.
+        /// </summary>
+        /// <param name="commonConfig">The common config.</param>
+        /// <param name="entityTypes">The entity types.</param>
         public static void GetConfigFromAttributes(ICommonConfiguration commonConfig, Collection<Type> entityTypes)
         {
             if (entityTypes == null || entityTypes.Count == 0)

@@ -45,6 +45,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -57,6 +58,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Db4objects.Db4o, Version=8.0.160.14822, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL" />
+    <Reference Include="Db4objects.Db4o.CS">
+      <HintPath>..\Binary_NET4\db4o-8.0-net40\bin\net-4.0\Db4objects.Db4o.CS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Web" />
@@ -66,13 +70,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseConfig\TransientFieldAttribute.cs" />
+    <Compile Include="ApplicationConfig\DB4OConfigSection.cs" />
+    <Compile Include="ApplicationConfig\DB4ODatabaseElement.cs" />
+    <Compile Include="ApplicationConfig\DB4ODatabaseElementCollection.cs" />
+    <Compile Include="ApplicationConfig\DB4ODatabaseValidator.cs" />
     <Compile Include="DatabaseConfig\IndexedFieldAttribute.cs" />
+    <Compile Include="DatabaseConfig\TransientFieldAttribute.cs" />
     <Compile Include="DatabaseConfig\UniqueFieldValueConstraintAttribute.cs" />
     <Compile Include="DatabaseConfig\UuidClassAttribute.cs" />
     <Compile Include="DatabaseConfig\VersionNumberClassAttribute.cs" />
     <Compile Include="DatabaseConfig\ConfigGenerator.cs" />
+    <Compile Include="EntityInfo\EntityInfoExtensions.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="EntityInfo\IDB4OEntityInfo.cs" />
     <Compile Include="OleDbMigration\ColumnInformationAttribute.cs" />
     <Compile Include="OleDbMigration\MigratorGettingTypesToLoadEventArgs.cs" />
     <Compile Include="OleDbMigration\RelationInformationAttribute.cs" />
@@ -86,6 +96,9 @@
     <Compile Include="OleDbMigration\ISelectProvider.cs" />
     <Compile Include="OleDbMigration\SelectProviders\SqlServerSelectProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web\DataBasesRepository.cs" />
+    <Compile Include="Web\DB4ODatabases.cs" />
+    <Compile Include="Web\DB4OHttpModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Key.snk" />

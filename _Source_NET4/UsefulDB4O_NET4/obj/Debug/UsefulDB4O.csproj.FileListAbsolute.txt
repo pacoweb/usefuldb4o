@@ -20,3 +20,40 @@ C:\Source\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.pdb
 C:\Source\_Source_NET4\UsefulDB4O_NET4\obj\Debug\ResolveAssemblyReference.cache
 C:\Source\_Source_NET4\UsefulDB4O_NET4\obj\Debug\UsefulDB4O.dll
 C:\Source\_Source_NET4\UsefulDB4O_NET4\obj\Debug\UsefulDB4O.pdb
+C:\Source\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Db4objects.Db4o.CS.dll
+C:\Source\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Db4objects.Db4o.CS.xml
+D:\Documents and Settings\fgm\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.dll
+D:\Documents and Settings\fgm\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.pdb
+D:\Documents and Settings\fgm\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Db4objects.Db4o.CS.dll
+D:\Documents and Settings\fgm\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Db4objects.Db4o.CS.xml
+D:\Documents and Settings\fgm\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\obj\Debug\ResolveAssemblyReference.cache
+D:\Documents and Settings\fgm\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\obj\Debug\UsefulDB4O.dll
+D:\Documents and Settings\fgm\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\obj\Debug\UsefulDB4O.pdb
+D:\Documents and Settings\fgm\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Db4objects.Db4o.Linq.dll
+D:\Documents and Settings\fgm\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Mono.Reflection.dll
+C:\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.dll
+C:\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.pdb
+C:\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Db4objects.Db4o.CS.dll
+C:\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Db4objects.Db4o.Linq.dll
+C:\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Mono.Reflection.dll
+C:\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Db4objects.Db4o.CS.xml
+C:\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\obj\Debug\UsefulDB4O.dll
+C:\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\obj\Debug\UsefulDB4O.pdb
+D:\Documents and Settings\fgm\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.dll.CodeAnalysisLog.xml
+D:\Documents and Settings\fgm\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.dll.lastcodeanalysissucceeded
+C:\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.dll.CodeAnalysisLog.xml
+C:\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.dll.lastcodeanalysissucceeded
+D:\Documents and Settings\usuario\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.dll
+D:\Documents and Settings\usuario\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.pdb
+D:\Documents and Settings\usuario\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.dll.CodeAnalysisLog.xml
+D:\Documents and Settings\usuario\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.dll.lastcodeanalysissucceeded
+D:\Documents and Settings\usuario\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Db4objects.Db4o.CS.dll
+D:\Documents and Settings\usuario\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Db4objects.Db4o.Linq.dll
+D:\Documents and Settings\usuario\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Mono.Reflection.dll
+D:\Documents and Settings\usuario\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\bin\Debug\Db4objects.Db4o.CS.xml
+D:\Documents and Settings\usuario\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\obj\Debug\ResolveAssemblyReference.cache
+D:\Documents and Settings\usuario\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\obj\Debug\UsefulDB4O.dll
+D:\Documents and Settings\usuario\Mis documentos\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\obj\Debug\UsefulDB4O.pdb
+C:\Source\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.dll.CodeAnalysisLog.xml
+C:\Source\_Source_NET4\UsefulDB4O_NET4\bin\Debug\UsefulDB4O.dll.lastcodeanalysissucceeded

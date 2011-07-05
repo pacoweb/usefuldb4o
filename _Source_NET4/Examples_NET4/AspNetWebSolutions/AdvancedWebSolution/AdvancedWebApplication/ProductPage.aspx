@@ -21,20 +21,20 @@
 
                 <asp:Label runat="server" ID="lblName" AssociatedControlID="txtName" EnableViewState="false" Text="Product Name"></asp:Label>
                 <asp:TextBox runat="server" ID="txtName" Text='<%#Bind("Name")%>'></asp:TextBox>
-                <asp:RequiredFieldValidator runat="server" ID="rqNameValidator" ControlToValidate="txtName"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator runat="server" ID="rqNameValidator" ControlToValidate="txtName" Text="*"></asp:RequiredFieldValidator>
                 <br />
 
                 <asp:Label runat="server" ID="lblPrice" AssociatedControlID="txtPrice" EnableViewState="false" Text="Product Price"></asp:Label>
                 <asp:TextBox runat="server" ID="txtPrice" Text='<%#Bind("Price")%>' MaxLength="10"></asp:TextBox>
-                <asp:RequiredFieldValidator runat="server" ID="rqPriceValidator" ControlToValidate="txtPrice"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator runat="server" ID="rgxPriveValidator" ControlToValidate="txtPrice" ValidationExpression="^\d+(\.\d{1,2})?$"></asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator runat="server" ID="rqPriceValidator" ControlToValidate="txtPrice" Text="*"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator runat="server" ID="rgxPriveValidator" ControlToValidate="txtPrice" ValidationExpression="^\d+(\.\d{1,2})?$" Text="*"></asp:RegularExpressionValidator>
                 <br />
 
                 <asp:Label runat="server" ID="lblCategory" AssociatedControlID="cmbCategory" EnableViewState="false" Text="Product Category"></asp:Label>
                 <asp:DropDownList runat="server" ID="cmbCategory" AppendDataBoundItems="true" DataSourceID="ObjectDataSource2" DataTextField="CategoryName" DataValueField="ID" SelectedValue='<%#Bind("ProductCategory.ID") %>'>
                     <asp:ListItem Text="Pick a category..." Value=""></asp:ListItem>
                 </asp:DropDownList>
-                <asp:RequiredFieldValidator runat="server" ID="rqCategoryValidator" ControlToValidate="cmbCategory"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator runat="server" ID="rqCategoryValidator" ControlToValidate="cmbCategory" Text="*"></asp:RequiredFieldValidator>
                 <br />
 
                 <asp:CheckBox runat="server" ID="chkEnabled" Checked='<%#Bind("IsEnabled")%>' Text="Enabled" />
@@ -52,20 +52,20 @@
 
                 <asp:Label runat="server" ID="lblName" AssociatedControlID="txtName" EnableViewState="false" Text="Product Name"></asp:Label>
                 <asp:TextBox runat="server" ID="txtName" Text='<%#Bind("Name")%>'></asp:TextBox>
-                <asp:RequiredFieldValidator runat="server" ID="rqNameValidator" ControlToValidate="txtName"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator runat="server" ID="rqNameValidator" ControlToValidate="txtName" Text="*"></asp:RequiredFieldValidator>
                 <br />
 
                 <asp:Label runat="server" ID="lblPrice" AssociatedControlID="txtPrice" EnableViewState="false" Text="Product Price"></asp:Label>
                 <asp:TextBox runat="server" ID="txtPrice" Text='<%#Bind("Price")%>' MaxLength="10" ></asp:TextBox>
-                <asp:RequiredFieldValidator runat="server" ID="rqPriceValidator" ControlToValidate="txtPrice"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator runat="server" ID="rgxPriveValidator" ControlToValidate="txtPrice" ValidationExpression="^\d+(\.\d{1,2})?$"></asp:RegularExpressionValidator>
+                <asp:RequiredFieldValidator runat="server" ID="rqPriceValidator" ControlToValidate="txtPrice" Text="*"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator runat="server" ID="rgxPriveValidator" ControlToValidate="txtPrice" ValidationExpression="^\d+(\.\d{1,2})?$" Text="*"></asp:RegularExpressionValidator>
                 <br />
 
                 <asp:Label runat="server" ID="lblCategory" AssociatedControlID="cmbCategory" EnableViewState="false" Text="Product Category"></asp:Label>
                 <asp:DropDownList runat="server" ID="cmbCategory" AppendDataBoundItems="true" DataSourceID="ObjectDataSource2" DataTextField="CategoryName" DataValueField="ID" SelectedValue='<%#Bind("ProductCategory.ID") %>'>
                     <asp:ListItem Text="Pick a category..." Value="" Selected="True"></asp:ListItem>
                 </asp:DropDownList>
-                <asp:RequiredFieldValidator runat="server" ID="rqCategoryValidator" ControlToValidate="cmbCategory"></asp:RequiredFieldValidator>
+                <asp:RequiredFieldValidator runat="server" ID="rqCategoryValidator" ControlToValidate="cmbCategory" Text="*"></asp:RequiredFieldValidator>
                 <br />
 
                 <asp:CheckBox runat="server" ID="chkEnabled" Checked='<%#Bind("IsEnabled")%>' Text="Enabled" />

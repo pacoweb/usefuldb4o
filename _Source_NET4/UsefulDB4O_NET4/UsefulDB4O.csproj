@@ -57,15 +57,16 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Db4objects.Db4o, Version=8.0.160.14822, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL" />
+    <Reference Include="Db4objects.Db4o, Version=8.0.184.15484, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Binary_NET4\db4o-8.0-net40\bin\net-4.0\Db4objects.Db4o.dll</HintPath>
+    </Reference>
     <Reference Include="Db4objects.Db4o.CS">
       <HintPath>..\Binary_NET4\db4o-8.0-net40\bin\net-4.0\Db4objects.Db4o.CS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>

@@ -1,0 +1,27 @@
+<configuration>
+    <configSections>
+        <section name="db4o" type="UsefulDB4O.ApplicationConfig.DB4OConfigSection"/>
+    </configSections>
+    <db4o>
+        <databases>
+            <database
+                alias="ExampleDatabaseProducts"
+                serverType="EmbeddedServer"
+                openServerRetriesOnLock="10"
+                fileDb4oPath="/App_Data/example.db4o"
+                openContainerOnBeginRequest="true"
+                staticMethodWithDatabaseConfig="UsefulDB4OToWeb.ExampleEntities.DatabasesConfiguration.GetExampleConfiguration"
+            />
+        </databases>
+    </db4o>
+    <system.web>
+        <httpModules>
+            <add name="DB4OHttpModule" type="UsefulDB4O.Web.DB4OHttpModule, UsefulDB4O" />
+        </httpModules>
+    </system.web>
+    <system.webServer>
+        <modules>
+            <add name="DB4OHttpModule" type="UsefulDB4O.Web.DB4OHttpModule, UsefulDB4O" />
+        </modules>
+    </system.webServer>
+</configuration>

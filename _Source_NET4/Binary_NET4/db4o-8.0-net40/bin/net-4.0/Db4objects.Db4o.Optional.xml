@@ -35,6 +35,109 @@
             <param name="obj">the object</param>
             <returns>the ObjectContainer</returns>
         </member>
+        <member name="T:Db4objects.Db4o.Filestats.BigSetMiscCollector">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Filestats.IMiscCollector">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Filestats.ClassNode">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Filestats.ClassUsageStats">
+            <summary>Statistics for the byte usage for a single class (instances, indices, etc.) in a db4o database file.
+            	</summary>
+            <remarks>Statistics for the byte usage for a single class (instances, indices, etc.) in a db4o database file.
+            	</remarks>
+            <exclude></exclude>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.ClassUsageStats.ClassName">
+            <returns>the name of the persistent class</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.ClassUsageStats.SlotUsage">
+            <returns>number of bytes used slots containing the actual class instances</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.ClassUsageStats.ClassIndexUsage">
+            <returns>number of bytes used for the index of class instances</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.ClassUsageStats.FieldIndexUsage">
+            <returns>number of bytes used for field indexes, if any</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.ClassUsageStats.MiscUsage">
+            <returns>
+            number of bytes used for features that are specific to this class (ex.: the BTree encapsulated within a
+            <see cref="T:Db4objects.Db4o.Internal.Collections.BigSet`1">Db4objects.Db4o.Internal.Collections.BigSet&lt;E&gt;
+            	</see>
+            instance)
+            </returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.ClassUsageStats.TotalUsage">
+            <returns>aggregated byte usage for this persistent class</returns>
+        </member>
+        <member name="T:Db4objects.Db4o.Filestats.FileUsageStats">
+            <summary>Byte usage statistics for a db4o database file</summary>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.FileUsageStats.FileHeader">
+            <returns>bytes used by the db4o file header (static and variable parts)</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.FileUsageStats.Freespace">
+            <returns>total number of bytes registered as freespace, available for reuse</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.FileUsageStats.IdSystem">
+            <returns>bytes used by the id system indices</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.FileUsageStats.ClassMetadata">
+            <returns>number of bytes used for class metadata (class metadata repository and schema definitions)
+            	</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.FileUsageStats.FreespaceUsage">
+            <returns>number of bytes used for the bookkeeping of the freespace system itself</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.FileUsageStats.UuidUsage">
+            <returns>number of bytes used for the uuid index</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.FileUsageStats.CommitTimestampUsage">
+            <returns>number of bytes used for the commit timestamp indexes</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.FileUsageStats.FileSize">
+            <returns>total file size in bytes</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.FileUsageStats.TotalUsage">
+            <returns>
+            number of bytes used aggregated from all categories - should always be equal to
+            <see cref="M:Db4objects.Db4o.Filestats.FileUsageStats.FileSize">FileSize()</see>
+            </returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.FileUsageStats.ClassUsageStats">
+            <returns>the statistics for each persisted class</returns>
+        </member>
+        <member name="M:Db4objects.Db4o.Filestats.FileUsageStats.ClassStats(System.String)">
+            <param name="name">a fully qualified class name</param>
+            <returns>the statistics for the class with the given name</returns>
+        </member>
+        <member name="T:Db4objects.Db4o.Filestats.FileUsageStatsCollector">
+            <summary>
+            Collects database file usage statistics and prints them
+            to the console.
+            </summary>
+            <remarks>
+            Collects database file usage statistics and prints them
+            to the console.
+            </remarks>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Db4objects.Db4o.Filestats.FileUsageStatsCollector.Main(System.String[])" -->
+        <member name="T:Db4objects.Db4o.Filestats.FileUsageStatsUtil">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Filestats.ISlotMap">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Filestats.NullSlotMap">
+            <exclude></exclude>
+        </member>
+        <member name="T:Db4objects.Db4o.Filestats.SlotMapImpl">
+            <exclude></exclude>
+        </member>
         <member name="T:Db4objects.Db4o.IO.DebugIoAdapter">
             <exclude></exclude>
         </member>

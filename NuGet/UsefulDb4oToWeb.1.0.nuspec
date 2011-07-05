@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>UsefulDB4OToWeb</id>
+    <version>1.0</version>
+    <title>UsefulDB4OToWeb</title>
+    <authors>PacoWeb</authors>
+    <owners>PacoWeb</owners>
+    <licenseUrl>http://usefuldb4o.codeplex.com/license</licenseUrl>
+    <projectUrl>http://usefuldb4o.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package allows you to easily use multiple db4o "object databases" in your asp.net project. It also adds to your code a sample implementation that you can use directly.</description>
+    <summary>This package allows you to easily use multiple db4o "object databases" in your asp.net project. It also adds to your code a sample implementation that you can use directly.</summary>
+    <language>en-US</language>
+    <tags>db4o object database UsefulDB4O asp.net website</tags>
+  </metadata>
+  <files>
+    <file src="content\UsefulDB4OToWeb\ExampleEntities\Category.cs.pp" target="content\UsefulDB4OToWeb\ExampleEntities\Category.cs.pp" />
+    <file src="content\UsefulDB4OToWeb\ExampleEntities\DatabasesConfiguration.cs.pp" target="content\UsefulDB4OToWeb\ExampleEntities\DatabasesConfiguration.cs.pp" />
+    <file src="content\UsefulDB4OToWeb\ExampleEntities\Product.cs.pp" target="content\UsefulDB4OToWeb\ExampleEntities\Product.cs.pp" />
+    <file src="content\UsefulDB4OToWeb\ExampleEntities\ProductsServices.cs.pp" target="content\UsefulDB4OToWeb\ExampleEntities\ProductsServices.cs.pp" />
+    <file src="content\web.config.transform" target="content\web.config.transform" />
+    <file src="lib\net20\Db4objects.Db4o.CS.dll" target="lib\net20\Db4objects.Db4o.CS.dll" />
+    <file src="lib\net20\Db4objects.Db4o.dll" target="lib\net20\Db4objects.Db4o.dll" />
+    <file src="lib\net20\UsefulDB4O.dll" target="lib\net20\UsefulDB4O.dll" />
+    <file src="lib\net40\Db4objects.Db4o.CS.dll" target="lib\net40\Db4objects.Db4o.CS.dll" />
+    <file src="lib\net40\Db4objects.Db4o.dll" target="lib\net40\Db4objects.Db4o.dll" />
+    <file src="lib\net40\UsefulDB4O.dll" target="lib\net40\UsefulDB4O.dll" />
+  </files>
+</package>

@@ -22,3 +22,6 @@ C:\Source\_Source_NET4\Examples_NET4\OleDBMigrationSolutionNET4\Example.Entities
 C:\Source\_Source_NET4\Examples_NET4\OleDBMigrationSolutionNET4\Example.Entities\obj\Debug\ResolveAssemblyReference.cache
 C:\Source\_Source_NET4\Examples_NET4\OleDBMigrationSolutionNET4\Example.Entities\obj\Debug\Example.Entities.dll
 C:\Source\_Source_NET4\Examples_NET4\OleDBMigrationSolutionNET4\Example.Entities\obj\Debug\Example.Entities.pdb
+C:\Source\_Source_NET4\Examples_NET4\OleDBMigrationSolutionNET4\Example.Entities\bin\Debug\Db4objects.Db4o.CS.dll
+C:\Source\_Source_NET4\Examples_NET4\OleDBMigrationSolutionNET4\Example.Entities\bin\Debug\Db4objects.Db4o.xml
+C:\Source\_Source_NET4\Examples_NET4\OleDBMigrationSolutionNET4\Example.Entities\bin\Debug\Db4objects.Db4o.CS.xml

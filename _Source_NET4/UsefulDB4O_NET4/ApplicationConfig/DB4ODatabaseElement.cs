@@ -224,8 +224,7 @@ namespace UsefulDB4O.ApplicationConfig
         /// <returns></returns>
         public bool ExistAnyCustomConfiguration()
         {
-            if (String.IsNullOrEmpty(AssemblyWithDatabaseConfig)
-                    ||  String.IsNullOrEmpty(StaticMethodWithDatabaseConfig))
+            if (String.IsNullOrEmpty(StaticMethodWithDatabaseConfig))
                 return false;
 
             return true;
@@ -248,29 +247,39 @@ namespace UsefulDB4O.ApplicationConfig
             
             try
             {
-                var assemblyName    = new AssemblyName(AssemblyWithDatabaseConfig);
+                var assemblies = AppDomain.CurrentDomain.GetAssemblies()
+                    .Where(asm => !asm.FullName.StartsWith("System.", StringComparison.Ordinal))
+                    .ToList();
 
-                var configAssembly  = AppDomain.CurrentDomain.GetAssemblies()
-                        .Where(asm => !asm.FullName.StartsWith("System.", StringComparison.Ordinal))
-                        .Where(asm => asm.GetName().Name == assemblyName.Name).FirstOrDefault();
+                Assembly configAssembly = null;
 
+                if (!String.IsNullOrEmpty(AssemblyWithDatabaseConfig))
+                {
+                    var assemblyName = new AssemblyName(AssemblyWithDatabaseConfig);
 
-                if (configAssembly == null) //Maybe App_Code
-                    configAssembly = Assembly.Load(AssemblyWithDatabaseConfig);
-       
+                    configAssembly = assemblies
+                        .FirstOrDefault(asm => asm.GetName().Name == assemblyName.Name);
+
+                    if (configAssembly == null) //Maybe App_Code
+                        configAssembly = Assembly.Load(AssemblyWithDatabaseConfig);
+                }
+
+                if (configAssembly == null)
+                    configAssembly = assemblies
+                        .FirstOrDefault(asm => asm.GetType(configMethodClass, false, true) != null);
 
                 if(configAssembly == null)
                     throw new Exception(
-                        String.Format("The assembly '{0}' of the config server´s property AssemblyWithDatabaseConfig not exist in the assemblies of the current domain"
-                            , AssemblyWithDatabaseConfig));
+                       String.Format("The type '{0}' of the config server´s property StaticMethodWithDatabaseConfig not exist in any loaded assembly"
+                       , configMethodClass));
 
                 var type = configAssembly
-                        .GetType(configMethodClass, false, true);
+                    .GetType(configMethodClass, false, true);
 
                 if (type == null)
                     throw new Exception(
-                       String.Format("The type '{0}' of the config server´s property GetConfigMethodFullName not exist in the Executing Assembly"
-                       , configMethodClass));
+                       String.Format("The type '{0}' of the config server´s property StaticMethodWithDatabaseConfig not exist in Assembly '{1}'"
+                       , configMethodClass, configAssembly.FullName));
                 
                 var methodInfo = type.GetMethod(configParts[configParts.Length-1], 
                    BindingFlags.Static | BindingFlags.Public);

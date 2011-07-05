@@ -9,3 +9,5 @@ C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\Example.
 C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\UsefulDB4O.pdb
 C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\obj\Debug\ConsoleMigratorTest.exe
 C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\obj\Debug\ConsoleMigratorTest.pdb
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\Db4objects.Db4o.CS.dll
+C:\Source\Examples\OleDBMigrationSolution\ConsoleMigratorTest\bin\Debug\Db4objects.Db4o.CS.xml

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UsefulDB4O.OleDBMigration;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace ConsoleMigratorTest
 {
@@ -11,8 +12,12 @@ namespace ConsoleMigratorTest
     {
         static void Main(string[] args)
         {
-            const string db4OFilePath = @"C:\entities.db4o";
-            
+            const string db4OFilePath = @"C:\entities2.db4o";
+
+            var stopWatch = new Stopwatch();
+
+            stopWatch.Start();
+
             using (var migrator = new OleDBDatabaseMigrator())
             {
                 migrator.EntitiesAssembly       = Assembly.Load("Example.Entities");
@@ -61,7 +66,9 @@ namespace ConsoleMigratorTest
 
             }
 
-            Console.WriteLine("Process Ended");
+            stopWatch.Stop();
+            
+            Console.WriteLine(String.Format("Process Ended. Total miliseconds: {0}", stopWatch.ElapsedMilliseconds));
             Console.WriteLine(String.Format("Your database file is in: {0}", db4OFilePath));
             Console.ReadLine();
         }

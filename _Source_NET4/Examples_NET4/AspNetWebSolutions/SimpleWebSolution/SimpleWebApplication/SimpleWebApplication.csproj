@@ -13,6 +13,7 @@
     <RootNamespace>SimpleWebApplication</RootNamespace>
     <AssemblyName>SimpleWebApplication</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -75,16 +76,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\Users\Fran\Documents\My Dropbox\Project\_Source_NET4\UsefulDB4O_NET4\UsefulDB4O.csproj">
-      <Project>{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}</Project>
-      <Name>UsefulDB4O</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Model\ModelDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\UsefulDB4O_NET4\UsefulDB4O.csproj">
+      <Project>{B669CDD4-06E5-4145-8F66-F6FF5DA7E47C}</Project>
+      <Name>UsefulDB4O</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

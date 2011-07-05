@@ -4,28 +4,28 @@
  <Namespaces>
   <Namespace Name="UsefulDB4O">
    <Messages>
-    <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+    <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
      <Issue Certainty="50" Level="Warning">Considere combinar los tipos definidos en 'UsefulDB4O' con otro espacio de nombres.</Issue>
     </Message>
    </Messages>
   </Namespace>
   <Namespace Name="UsefulDB4O.EntityInfo">
    <Messages>
-    <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+    <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
      <Issue Certainty="50" Level="Warning">Considere combinar los tipos definidos en 'UsefulDB4O.EntityInfo' con otro espacio de nombres.</Issue>
     </Message>
    </Messages>
   </Namespace>
   <Namespace Name="UsefulDB4O.OleDBMigration.SelectProviders">
    <Messages>
-    <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+    <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
      <Issue Certainty="50" Level="Warning">Considere combinar los tipos definidos en 'UsefulDB4O.OleDBMigration.SelectProviders' con otro espacio de nombres.</Issue>
     </Message>
    </Messages>
   </Namespace>
   <Namespace Name="UsefulDB4O.Web">
    <Messages>
-    <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+    <Message TypeName="AvoidNamespacesWithFewTypes" Category="Microsoft.Design" CheckId="CA1020" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
      <Issue Certainty="50" Level="Warning">Considere combinar los tipos definidos en 'UsefulDB4O.Web' con otro espacio de nombres.</Issue>
     </Message>
    </Messages>
@@ -42,14 +42,14 @@
          <Members>
           <Member Name="#ToPagedList`1(Db4objects.Db4o.IObjectSet,Db4objects.Db4o.IObjectContainer,System.Nullable`1&lt;System.Int32&gt;,System.Int32,System.Int32,System.Int32&amp;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="5#" TypeName="AvoidOutParameters" Category="Microsoft.Design" CheckId="CA1021" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="5#" TypeName="AvoidOutParameters" Category="Microsoft.Design" CheckId="CA1021" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4" File="Extensions.cs" Line="71">Considere el uso de un diseño que no requiera que 'totalCount' sea un parámetro out.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ToPagedList`1(Db4objects.Db4o.IObjectSet,System.Int32,System.Int32,System.Int32&amp;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="3#" TypeName="AvoidOutParameters" Category="Microsoft.Design" CheckId="CA1021" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="3#" TypeName="AvoidOutParameters" Category="Microsoft.Design" CheckId="CA1021" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4" File="Extensions.cs" Line="54">Considere el uso de un diseño que no requiera que 'totalCount' sea un parámetro out.</Issue>
             </Message>
            </Messages>
@@ -64,7 +64,7 @@
          <Members>
           <Member Name="#GetInstance()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4OConfigSection.cs" Line="20">Cambie 'DB4OConfigSection.GetInstance()' a una propiedad cuando proceda.</Issue>
             </Message>
            </Messages>
@@ -75,38 +75,38 @@
          <Members>
           <Member Name="#FileDb4oPath" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="124">Corrija el uso de mayúsculas y minúsculas en 'Db' en el nombre del miembro 'DB4ODatabaseElement.FileDb4oPath' cambiándolo a 'DB'.</Issue>
             </Message>
-            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="124">Corrija el uso de mayúsculas y minúsculas en 'o' en el nombre del miembro 'DB4ODatabaseElement.FileDb4oPath' cambiándolo a 'O'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#FillIDB4OEntityInfo" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="IDB" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="IDB" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="195">Corrija el uso de mayúsculas y minúsculas en 'IDB' en el nombre del miembro 'DB4ODatabaseElement.FillIDB4OEntityInfo' cambiándolo a 'Idb'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetServerConfig`1()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
-             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="242">'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' crea una excepción de tipo 'Exception', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
-             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="263">'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' crea una excepción de tipo 'Exception', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
-             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="271">'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' crea una excepción de tipo 'Exception', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
-             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="281">'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' crea una excepción de tipo 'Exception', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="241">'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' crea una excepción de tipo 'Exception', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="272">'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' crea una excepción de tipo 'Exception', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="280">'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' crea una excepción de tipo 'Exception', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
+             <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="290">'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' crea una excepción de tipo 'Exception', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
-             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="263">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
-             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="271">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="272">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
-             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="286">Puesto que el comportamiento de 'string.Format(string, object, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="280">Puesto que el comportamiento de 'string.Format(string, object, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="295">Puesto que el comportamiento de 'string.Format(string, object, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
-             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="281">Puesto que el comportamiento de 'string.Format(string, object, object, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
+            <Message Id="System.String.Format(System.String,System.Object,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElement.cs" Line="290">Puesto que el comportamiento de 'string.Format(string, object, object, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4ODatabaseElement.GetServerConfig&lt;T&gt;()' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
            </Messages>
           </Member>
@@ -114,17 +114,17 @@
         </Type>
         <Type Name="DB4ODatabaseElementCollection" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+          <Message TypeName="CollectionsShouldImplementGenericInterface" Category="Microsoft.Design" CheckId="CA1010" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
            <Issue Certainty="90" Level="Error">'DB4ODatabaseElementCollection' parece ser una colección no genérica con establecimiento inflexible de tipos. Agregue una implementación a la instancia de ICollection&lt;T&gt; donde T es el tipo de elemento subyacente de 'DB4ODatabaseElementCollection'.</Issue>
           </Message>
          </Messages>
          <Members>
           <Member Name="#GetAll()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElementCollection.cs" Line="46">Cambie ''List&lt;DB4ODatabaseElement&gt;'' en 'DB4ODatabaseElementCollection.GetAll()' para que use Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; o KeyedCollection&lt;K,V&gt;</Issue>
             </Message>
-            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="UsePropertiesWhereAppropriate" Category="Microsoft.Design" CheckId="CA1024" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\ApplicationConfig" File="DB4ODatabaseElementCollection.cs" Line="46">Cambie 'DB4ODatabaseElementCollection.GetAll()' a una propiedad cuando proceda.</Issue>
             </Message>
            </Messages>
@@ -133,10 +133,10 @@
         </Type>
         <Type Name="Db4oServerType" Kind="Enum" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Name="Type" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'Db' en el nombre del tipo 'Db4oServerType' cambiándolo a 'DB'.</Issue>
           </Message>
-          <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Name="Type" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'o' en el nombre del tipo 'Db4oServerType' cambiándolo a 'O'.</Issue>
           </Message>
          </Messages>
@@ -149,14 +149,14 @@
          <Members>
           <Member Name="#FillGlobalID" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberAbbreviation" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'ID' en el nombre del miembro 'DB4OFillOptions.FillGlobalID' cambiándolo a 'Id'. 'Id' es una abreviación y, por tanto, no está sujeto a las directrices de mayúsculas y minúsculas para acrónimos.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#FillLocalID" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberAbbreviation" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'ID' en el nombre del miembro 'DB4OFillOptions.FillLocalID' cambiándolo a 'Id'. 'Id' es una abreviación y, por tanto, no está sujeto a las directrices de mayúsculas y minúsculas para acrónimos.</Issue>
             </Message>
            </Messages>
@@ -167,114 +167,114 @@
          <Members>
           <Member Name="#Activate(Db4objects.Db4o.Ext.Db4oUUID,Db4objects.Db4o.IObjectContainer,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="UUID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="UUID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="153">En el miembro 'EntityInfoExtensions.Activate(this Db4oUUID, IObjectContainer, int)', corrija el uso de mayúsculas y minúsculas en 'UUID' en el nombre del parámetro 'UUID' cambiándolo a 'uuid'.</Issue>
             </Message>
-            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="157">En el método 'EntityInfoExtensions.Activate(this Db4oUUID, IObjectContainer, int)' visible externamente, valide el parámetro 'container' antes de usarlo.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Activate(System.Int64,Db4objects.Db4o.IObjectContainer,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberParameterAbbreviation" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="132">En el miembro 'EntityInfoExtensions.Activate(this long, IObjectContainer, int)', corrija el uso de mayúsculas y minúsculas en 'ID' en el nombre del parámetro 'localID' cambiándolo a 'Id'. 'Id' es una abreviación y, por tanto, no está sujeto a las directrices de mayúsculas y minúsculas para acrónimos.</Issue>
             </Message>
-            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="136">En el método 'EntityInfoExtensions.Activate(this long, IObjectContainer, int)' visible externamente, valide el parámetro 'container' antes de usarlo.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Activate(UsefulDB4O.EntityInfo.IDB4OEntityInfo,Db4objects.Db4o.IObjectContainer,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="110">En el miembro 'EntityInfoExtensions.Activate(this IDB4OEntityInfo, IObjectContainer, int)', corrija el uso de mayúsculas y minúsculas en 'o' en el nombre del parámetro 'db4oInfoItem' cambiándolo a 'O'.</Issue>
             </Message>
-            <Message Id="0" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message Id="0" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="114">En el método 'EntityInfoExtensions.Activate(this IDB4OEntityInfo, IObjectContainer, int)' visible externamente, valide el parámetro 'db4oInfoItem' antes de usarlo.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ConvertToString(Db4objects.Db4o.Ext.Db4oUUID)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="UUID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="UUID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="285">En el miembro 'EntityInfoExtensions.ConvertToString(this Db4oUUID)', corrija el uso de mayúsculas y minúsculas en 'UUID' en el nombre del parámetro 'UUID' cambiándolo a 'uuid'.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="289">Puesto que el comportamiento de 'string.Format(string, object, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'EntityInfoExtensions.ConvertToString(this Db4oUUID)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#FillDB4OInfo(UsefulDB4O.EntityInfo.IDB4OEntityInfo,Db4objects.Db4o.IObjectContainer,UsefulDB4O.EntityInfo.DB4OFillOptions)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="64">En el miembro 'EntityInfoExtensions.FillDB4OInfo(this IDB4OEntityInfo, IObjectContainer, DB4OFillOptions)', corrija el uso de mayúsculas y minúsculas en 'o' en el nombre del parámetro 'db4oInfoItem' cambiándolo a 'O'.</Issue>
             </Message>
-            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="65">En el método 'EntityInfoExtensions.FillDB4OInfo(this IDB4OEntityInfo, IObjectContainer, DB4OFillOptions)' visible externamente, valide el parámetro 'container' antes de usarlo.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetActivated`1(Db4objects.Db4o.Ext.Db4oUUID,Db4objects.Db4o.IObjectContainer,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="UUID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="UUID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="223">En el miembro 'EntityInfoExtensions.GetActivated&lt;T&gt;(this Db4oUUID, IObjectContainer, int)', corrija el uso de mayúsculas y minúsculas en 'UUID' en el nombre del parámetro 'UUID' cambiándolo a 'uuid'.</Issue>
             </Message>
-            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="227">En el método 'EntityInfoExtensions.GetActivated&lt;T&gt;(this Db4oUUID, IObjectContainer, int)' visible externamente, valide el parámetro 'container' antes de usarlo.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetActivated`1(System.Int64,Db4objects.Db4o.IObjectContainer,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberParameterAbbreviation" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="200">En el miembro 'EntityInfoExtensions.GetActivated&lt;T&gt;(this long, IObjectContainer, int)', corrija el uso de mayúsculas y minúsculas en 'ID' en el nombre del parámetro 'localID' cambiándolo a 'Id'. 'Id' es una abreviación y, por tanto, no está sujeto a las directrices de mayúsculas y minúsculas para acrónimos.</Issue>
             </Message>
-            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="204">En el método 'EntityInfoExtensions.GetActivated&lt;T&gt;(this long, IObjectContainer, int)' visible externamente, valide el parámetro 'container' antes de usarlo.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetActivated`1(System.String,Db4objects.Db4o.IObjectContainer,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="Global" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="Global" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="246">En el miembro 'EntityInfoExtensions.GetActivated&lt;T&gt;(this string, IObjectContainer, int)', corrija el uso de mayúsculas y minúsculas en 'Global' en el nombre del parámetro 'GlobalID' cambiándolo a 'global'.</Issue>
             </Message>
-            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberParameterAbbreviation" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="246">En el miembro 'EntityInfoExtensions.GetActivated&lt;T&gt;(this string, IObjectContainer, int)', corrija el uso de mayúsculas y minúsculas en 'ID' en el nombre del parámetro 'GlobalID' cambiándolo a 'Id'. 'Id' es una abreviación y, por tanto, no está sujeto a las directrices de mayúsculas y minúsculas para acrónimos.</Issue>
             </Message>
-            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message Id="1" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="250">En el método 'EntityInfoExtensions.GetActivated&lt;T&gt;(this string, IObjectContainer, int)' visible externamente, valide el parámetro 'container' antes de usarlo.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetActivated`1(UsefulDB4O.EntityInfo.IDB4OEntityInfo,Db4objects.Db4o.IObjectContainer,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="176">En el miembro 'EntityInfoExtensions.GetActivated&lt;T&gt;(this IDB4OEntityInfo, IObjectContainer, int)', corrija el uso de mayúsculas y minúsculas en 'o' en el nombre del parámetro 'db4oInfoItem' cambiándolo a 'O'.</Issue>
             </Message>
-            <Message Id="0" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message Id="0" TypeName="Validar argumentos de métodos públicos" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="180">En el método 'EntityInfoExtensions.GetActivated&lt;T&gt;(this IDB4OEntityInfo, IObjectContainer, int)' visible externamente, valide el parámetro 'db4oInfoItem' antes de usarlo.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#HasDB4OEntityInfo(UsefulDB4O.EntityInfo.IDB4OEntityInfo)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="302">En el miembro 'EntityInfoExtensions.HasDB4OEntityInfo(this IDB4OEntityInfo)', corrija el uso de mayúsculas y minúsculas en 'o' en el nombre del parámetro 'db4oInfoItem' cambiándolo a 'O'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#RecoverUUID(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="UUID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="UUID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="266">Corrija el uso de mayúsculas y minúsculas en 'UUID' en el nombre del miembro 'EntityInfoExtensions.RecoverUUID(this string)' cambiándolo a 'Uuid'.</Issue>
              <Issue Name="MemberParameter" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="266">En el miembro 'EntityInfoExtensions.RecoverUUID(this string)', corrija el uso de mayúsculas y minúsculas en 'UUID' en el nombre del parámetro 'UUIDString' cambiándolo a 'uuid'.</Issue>
             </Message>
-            <Message Id="string" TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="string" TypeName="IdentifiersShouldNotContainTypeNames" Category="Microsoft.Naming" CheckId="CA1720" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="LanguageIndependentMemberParameter" Certainty="75" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="266">En el miembro 'EntityInfoExtensions.RecoverUUID(this string)', considere reemplazar el identificador del tipo de datos 'String' en el nombre del parámetro 'UUIDString' por un término más genérico, como 'value'.</Issue>
             </Message>
-            <Message Id="System.Convert.ToInt64(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+            <Message Id="System.Convert.ToInt64(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\EntityInfo" File="EntityInfoExtensions.cs" Line="275">Puesto que el comportamiento de 'Convert.ToInt64(string)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'EntityInfoExtensions.RecoverUUID(this string)' por una llamada a 'Convert.ToInt64(string, IFormatProvider)'. Si el resultado de 'Convert.ToInt64(string, IFormatProvider)' estará basado en los datos proporcionados por el usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado estará basado en datos almacenados a los que tiene acceso el software, como cuando se cargan desde un disco o una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
            </Messages>
@@ -285,14 +285,14 @@
          <Members>
           <Member Name="#DB4OGlobalID" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberAbbreviation" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'ID' en el nombre del miembro 'IDB4OEntityInfo.DB4OGlobalID' cambiándolo a 'Id'. 'Id' es una abreviación y, por tanto, no está sujeto a las directrices de mayúsculas y minúsculas para acrónimos.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#DB4OLocalID" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="ID" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="MemberAbbreviation" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'ID' en el nombre del miembro 'IDB4OEntityInfo.DB4OLocalID' cambiándolo a 'Id'. 'Id' es una abreviación y, por tanto, no está sujeto a las directrices de mayúsculas y minúsculas para acrónimos.</Issue>
             </Message>
            </Messages>
@@ -307,7 +307,7 @@
          <Members>
           <Member Name="#TypeRelationsToFill" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="75" Level="Warning">Cambie 'MigratorFillingTypeRelationsEventArgs.TypeRelationsToFill' para que sea de sólo lectura quitando el establecedor de propiedades.</Issue>
             </Message>
            </Messages>
@@ -318,7 +318,7 @@
          <Members>
           <Member Name="#EntityTypes" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="75" Level="Warning">Cambie 'MigratorGettingTypesToLoadEventArgs.EntityTypes' para que sea de sólo lectura quitando el establecedor de propiedades.</Issue>
             </Message>
            </Messages>
@@ -329,10 +329,10 @@
          <Members>
           <Member Name="#EntityPropertiesToLoad" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="CollectionPropertiesShouldBeReadOnly" Category="Microsoft.Usage" CheckId="CA2227" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="75" Level="Warning">Cambie 'MigratorLoadingTypeFromOleDBEventArgs.EntityPropertiesToLoad' para que sea de sólo lectura quitando el establecedor de propiedades.</Issue>
             </Message>
-            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="DoNotExposeGenericLists" Category="Microsoft.Design" CheckId="CA1002" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="Error">Cambie ''List&lt;PropertyInfo&gt;'' en 'MigratorLoadingTypeFromOleDBEventArgs.EntityPropertiesToLoad' para que use Collection&lt;T&gt;, ReadOnlyCollection&lt;T&gt; o KeyedCollection&lt;K,V&gt;</Issue>
             </Message>
            </Messages>
@@ -343,48 +343,48 @@
          <Members>
           <Member Name="#AddOledbRowsToEntity(System.Type,System.String,System.Collections.Generic.List`1&lt;System.Reflection.PropertyInfo&gt;,Db4objects.Db4o.IObjectContainer)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message TypeName="Revisar consultas SQL para comprobar si tienen vulnerabilidades de seguridad" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\OleDbMigration" File="OleDBDatabaseMigrator.cs" Line="484">La cadena de consulta pasada a 'OleDbCommand.OleDbCommand(string, OleDbConnection)' en 'OleDBDatabaseMigrator.AddOledbRowsToEntity(Type, string, List&lt;PropertyInfo&gt;, IObjectContainer)' podría contener las siguientes variables: 'select'. Si alguna de estas variables puede proceder de datos proporcionados por el usuario, considere el uso de un procedimiento almacenado o una consulta SQL parametrizada en lugar de compilar la consulta con concatenaciones de cadenas.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Db4oDataBaseFilePath" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="Member" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'Db' en el nombre del miembro 'OleDBDatabaseMigrator.Db4oDataBaseFilePath' cambiándolo a 'DB'.</Issue>
             </Message>
-            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="o" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="Member" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'o' en el nombre del miembro 'OleDBDatabaseMigrator.Db4oDataBaseFilePath' cambiándolo a 'O'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#DeSerializeFromXml(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="De" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="De" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\OleDbMigration" File="OleDBDatabaseMigrator.cs" Line="213">Corrija el uso de mayúsculas y minúsculas en 'De' en el nombre del miembro 'OleDBDatabaseMigrator.DeSerializeFromXml(string)' cambiándolo a 'DE'.</Issue>
             </Message>
-            <Message TypeName="No usar Dispose varias veces en objetos" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message TypeName="No usar Dispose varias veces en objetos" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\OleDbMigration" File="OleDBDatabaseMigrator.cs" Line="227">El objeto 'fileStream' admite Dispose más de una vez en el método 'OleDBDatabaseMigrator.DeSerializeFromXml(string)'. Para evitar generar una excepción System.ObjectDisposedException, no debe llamar a Dispose más de una vez en un objeto.: Lines: 227, 234, 240, 241</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#SerializeToXml(UsefulDB4O.OleDBMigration.OleDBDatabaseMigrator,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="No usar Dispose varias veces en objetos" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message TypeName="No usar Dispose varias veces en objetos" Category="Microsoft.Usage" CheckId="CA2202" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\OleDbMigration" File="OleDBDatabaseMigrator.cs" Line="204">El objeto 'writer' admite Dispose más de una vez en el método 'OleDBDatabaseMigrator.SerializeToXml(OleDBDatabaseMigrator, string)'. Para evitar generar una excepción System.ObjectDisposedException, no debe llamar a Dispose más de una vez en un objeto.: Lines: 197, 204</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#LoadedTypeFromOleDb" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="Member" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'Db' en el nombre del miembro 'OleDBDatabaseMigrator.LoadedTypeFromOleDb' cambiándolo a 'DB'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#LoadingTypeFromOleDb" Kind="Event" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="Member" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'Db' en el nombre del miembro 'OleDBDatabaseMigrator.LoadingTypeFromOleDb' cambiándolo a 'DB'.</Issue>
             </Message>
            </Messages>
@@ -393,56 +393,56 @@
         </Type>
         <Type Name="OleDBDatabaseMigrator+MigratorFilledTypeRelationsEventHandler" Kind="Delegate" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Certainty="90" Level="Error">No anide el tipo 'OleDBDatabaseMigrator.MigratorFilledTypeRelationsEventHandler'. Como alternativa, cambie su accesibilidad para que no esté visible externamente.</Issue>
           </Message>
-          <Message TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Certainty="95" Level="Error">Quite 'OleDBDatabaseMigrator.MigratorFilledTypeRelationsEventHandler' y reemplace el uso por EventHandler&lt;T&gt;</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="OleDBDatabaseMigrator+MigratorFillingTypeRelationsEventHandler" Kind="Delegate" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Certainty="90" Level="Error">No anide el tipo 'OleDBDatabaseMigrator.MigratorFillingTypeRelationsEventHandler'. Como alternativa, cambie su accesibilidad para que no esté visible externamente.</Issue>
           </Message>
-          <Message TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Certainty="95" Level="Error">Quite 'OleDBDatabaseMigrator.MigratorFillingTypeRelationsEventHandler' y reemplace el uso por EventHandler&lt;T&gt;</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="OleDBDatabaseMigrator+MigratorGettingTypesToLoadEventHandler" Kind="Delegate" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Certainty="90" Level="Error">No anide el tipo 'OleDBDatabaseMigrator.MigratorGettingTypesToLoadEventHandler'. Como alternativa, cambie su accesibilidad para que no esté visible externamente.</Issue>
           </Message>
-          <Message TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Certainty="95" Level="Error">Quite 'OleDBDatabaseMigrator.MigratorGettingTypesToLoadEventHandler' y reemplace el uso por EventHandler&lt;T&gt;</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="OleDBDatabaseMigrator+MigratorLoadedTypeFromOleDbEventHandler" Kind="Delegate" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Name="Type" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'Db' en el nombre del tipo 'OleDBDatabaseMigrator.MigratorLoadedTypeFromOleDbEventHandler' cambiándolo a 'DB'.</Issue>
           </Message>
-          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Certainty="90" Level="Error">No anide el tipo 'OleDBDatabaseMigrator.MigratorLoadedTypeFromOleDbEventHandler'. Como alternativa, cambie su accesibilidad para que no esté visible externamente.</Issue>
           </Message>
-          <Message TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Certainty="95" Level="Error">Quite 'OleDBDatabaseMigrator.MigratorLoadedTypeFromOleDbEventHandler' y reemplace el uso por EventHandler&lt;T&gt;</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="OleDBDatabaseMigrator+MigratorLoadingTypeFromOleDbEventHandler" Kind="Delegate" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Name="Type" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'Db' en el nombre del tipo 'OleDBDatabaseMigrator.MigratorLoadingTypeFromOleDbEventHandler' cambiándolo a 'DB'.</Issue>
           </Message>
-          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Certainty="90" Level="Error">No anide el tipo 'OleDBDatabaseMigrator.MigratorLoadingTypeFromOleDbEventHandler'. Como alternativa, cambie su accesibilidad para que no esté visible externamente.</Issue>
           </Message>
-          <Message TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+          <Message TypeName="UseGenericEventHandlerInstances" Category="Microsoft.Design" CheckId="CA1003" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
            <Issue Certainty="95" Level="Error">Quite 'OleDBDatabaseMigrator.MigratorLoadingTypeFromOleDbEventHandler' y reemplace el uso por EventHandler&lt;T&gt;</Issue>
           </Message>
          </Messages>
@@ -451,28 +451,28 @@
          <Members>
           <Member Name="#ChildColumnNames" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning">Cambie 'RelationInformationAttribute.ChildColumnNames' para que devuelva una colección o conviértalo en un método.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ForeignFieldNames" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning">Cambie 'RelationInformationAttribute.ForeignFieldNames' para que devuelva una colección o conviértalo en un método.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ParentColumnNames" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning">Cambie 'RelationInformationAttribute.ParentColumnNames' para que devuelva una colección o conviértalo en un método.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#PropertyNames" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="PropertiesShouldNotReturnArrays" Category="Microsoft.Performance" CheckId="CA1819" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="Warning">Cambie 'RelationInformationAttribute.PropertyNames' para que devuelva una colección o conviértalo en un método.</Issue>
             </Message>
            </Messages>
@@ -487,12 +487,12 @@
          <Members>
           <Member Name="#GetCurrentContextContainer(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4ODatabases.cs" Line="25">'DB4ODatabases.GetCurrentContextContainer(string)' crea una excepción de tipo 'ApplicationException', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
              <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4ODatabases.cs" Line="30">'DB4ODatabases.GetCurrentContextContainer(string)' crea una excepción de tipo 'ApplicationException', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
              <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4ODatabases.cs" Line="36">'DB4ODatabases.GetCurrentContextContainer(string)' crea una excepción de tipo 'ApplicationException', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4ODatabases.cs" Line="30">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4ODatabases.GetCurrentContextContainer(string)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4ODatabases.cs" Line="36">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4ODatabases.GetCurrentContextContainer(string)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4ODatabases.cs" Line="39">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4ODatabases.GetCurrentContextContainer(string)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
@@ -505,7 +505,7 @@
          <Members>
           <Member Name="#BindContainerEvents(Db4objects.Db4o.IObjectContainer,UsefulDB4O.ApplicationConfig.DB4ODatabaseElement)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="214">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4OHttpModule.BindContainerEvents(IObjectContainer, DB4ODatabaseElement)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="233">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4OHttpModule.BindContainerEvents(IObjectContainer, DB4ODatabaseElement)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
@@ -513,62 +513,62 @@
           </Member>
           <Member Name="#CloseContainer(System.String,System.Web.HttpContext)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="267">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4OHttpModule.CloseContainer(string, HttpContext)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#CloseDataBase(System.String)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="118">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4OHttpModule.CloseDataBase(string)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Db4OHttpModuleTypeName" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message Id="Db" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="Member" Certainty="85" Level="Error">Corrija el uso de mayúsculas y minúsculas en 'Db' en el nombre del miembro 'DB4OHttpModule.Db4OHttpModuleTypeName' cambiándolo a 'DB'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetCompleteCurrentClientId(System.String)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="298">Puesto que el comportamiento de 'string.Format(string, object, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4OHttpModule.GetCompleteCurrentClientId(string)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetContainer(System.String,System.Web.HttpContext)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
            <Messages>
-            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="68">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4OHttpModule.GetContainer(string, HttpContext)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetContainerFromConfig(UsefulDB4O.ApplicationConfig.DB4ODatabaseElement,System.Web.HttpContext)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="Eliminar (Dispose) objetos antes de perder el ámbito" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message TypeName="Eliminar (Dispose) objetos antes de perder el ámbito" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Name="ExceptionEdge" Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="193">En el método 'DB4OHttpModule.GetContainerFromConfig(DB4ODatabaseElement, HttpContext)', no se elimina (Dispose) el objeto 'container' en todas las rutas de acceso de excepciones. Llame a System.IDisposable.Dispose en el objeto 'container' antes de que todas las referencias a él estén fuera de ámbito.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="179">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4OHttpModule.GetContainerFromConfig(DB4ODatabaseElement, HttpContext)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#GetEmbeddedServer(UsefulDB4O.ApplicationConfig.DB4ODatabaseElement,System.Int32,System.Web.HttpContext)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
+            <Message TypeName="DoNotRaiseReservedExceptionTypes" Category="Microsoft.Usage" CheckId="CA2201" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
              <Issue Name="TooGeneric" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="140">'DB4OHttpModule.GetEmbeddedServer(DB4ODatabaseElement, int, HttpContext)' crea una excepción de tipo 'Exception', un tipo de excepción que no es suficientemente específica y que nunca debería producir el código de usuario. Si se produce esta instancia de excepción, use un tipo de excepción diferente.</Issue>
             </Message>
-            <Message TypeName="Eliminar (Dispose) objetos antes de perder el ámbito" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="DependsOnFix">
+            <Message TypeName="Eliminar (Dispose) objetos antes de perder el ámbito" Category="Microsoft.Reliability" CheckId="CA2000" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="DependsOnFix">
              <Issue Name="NonExceptionEdge" Certainty="75" Level="Warning" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="151">En el método 'DB4OHttpModule.GetEmbeddedServer(DB4ODatabaseElement, int, HttpContext)', llame a System.IDisposable.Dispose en el objeto 'database' antes de que todas las referencias a él estén fuera de ámbito.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="140">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4OHttpModule.GetEmbeddedServer(DB4ODatabaseElement, int, HttpContext)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="168">Puesto que el comportamiento de 'string.Format(string, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4OHttpModule.GetEmbeddedServer(DB4ODatabaseElement, int, HttpContext)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
-            <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="NonBreaking">
+            <Message Id="System.String.Format(System.String,System.Object,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="NonBreaking">
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="133">Puesto que el comportamiento de 'string.Format(string, object, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4OHttpModule.GetEmbeddedServer(DB4ODatabaseElement, int, HttpContext)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
              <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="158">Puesto que el comportamiento de 'string.Format(string, object, object)' podría variar en función de la configuración regional del usuario actual, reemplace esta llamada en 'DB4OHttpModule.GetEmbeddedServer(DB4ODatabaseElement, int, HttpContext)' por una llamada a 'string.Format(IFormatProvider, string, params object[])'. Si el resultado de 'string.Format(IFormatProvider, string, params object[])' se mostrará al usuario, especifique 'CultureInfo.CurrentCulture' como parámetro 'IFormatProvider'. De lo contrario, si el resultado se almacenará y será el software quien tenga acceso a él, como cuando se almacena en un disco o en una base de datos, especifique 'CultureInfo.InvariantCulture'.</Issue>
             </Message>
@@ -576,8 +576,8 @@
           </Member>
           <Member Name="#Init(System.Web.HttpApplication)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message Id="0#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2010-12-27 23:57:21Z" FixCategory="Breaking">
-             <Issue Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="50">En el miembro 'DB4OHttpModule.Init(HttpApplication)', cambie el nombre del parámetro 'application' a 'context' para que coincida con el identificador tal como se ha declarado en 'IHttpModule.Init(HttpApplication)'.</Issue>
+            <Message Id="0#" TypeName="ParameterNamesShouldMatchBaseDeclaration" Category="Microsoft.Naming" CheckId="CA1725" Status="Active" Created="2011-07-05 10:33:59Z" FixCategory="Breaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Source\_Source_NET4\UsefulDB4O_NET4\Web" File="DB4OHttpModule.cs" Line="38">En el miembro 'DB4OHttpModule.Init(HttpApplication)', cambie el nombre del parámetro 'application' a 'context' para que coincida con el identificador tal como se ha declarado en 'IHttpModule.Init(HttpApplication)'.</Issue>
             </Message>
            </Messages>
           </Member>
